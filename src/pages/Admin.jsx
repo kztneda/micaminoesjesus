@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { getActivities, saveActivities, resetActivities } from '../data/activitiesStore';
-import { activities as defaultActivities } from '../data/activities';
+import defaultActivities from '../data/activities.json';
 
 const ADMIN_PASSWORD = 'mcj@2025';
 
@@ -10,7 +9,7 @@ export default function Admin() {
   const [authenticated, setAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
   const [passwordError, setPasswordError] = useState(false);
-  const [activities, setActivities] = useState(getActivities);
+  const [activities, setActivities] = useState(defaultActivities);
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState(null);
   const [toast, setToast] = useState('');
@@ -30,11 +29,6 @@ export default function Admin() {
     }
   }
 
-  function persist(list) {
-    saveActivities(list);
-    setActivities(list);
-  }
-
   function handleFormChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -43,19 +37,15 @@ export default function Admin() {
     e.preventDefault();
     if (!form.title.trim() || !form.dates.trim() || !form.desc.trim()) return;
 
-    let updated;
     if (editingId !== null) {
-      updated = activities.map((a) =>
-        a.id === editingId ? { ...a, ...form } : a
-      );
-      showToast('Actividad actualizada.');
+      setActivities(activities.map((a) => (a.id === editingId ? { ...a, ...form } : a)));
+      showToast('Actividad actualizada. Exporta el JSON para guardar los cambios.');
     } else {
       const newId = activities.length > 0 ? Math.max(...activities.map((a) => a.id)) + 1 : 1;
-      updated = [...activities, { id: newId, ...form }];
-      showToast('Actividad añadida.');
+      setActivities([...activities, { id: newId, ...form }]);
+      showToast('Actividad añadida. Exporta el JSON para guardar los cambios.');
     }
 
-    persist(updated);
     setForm(emptyForm);
     setEditingId(null);
   }
@@ -68,13 +58,12 @@ export default function Admin() {
 
   function handleDelete(id) {
     if (!window.confirm('¿Eliminar esta actividad?')) return;
-    const updated = activities.filter((a) => a.id !== id);
-    persist(updated);
+    setActivities(activities.filter((a) => a.id !== id));
     if (editingId === id) {
       setEditingId(null);
       setForm(emptyForm);
     }
-    showToast('Actividad eliminada.');
+    showToast('Actividad eliminada. Exporta el JSON para guardar los cambios.');
   }
 
   function handleCancel() {
@@ -90,7 +79,7 @@ export default function Admin() {
     a.download = 'activities.json';
     a.click();
     URL.revokeObjectURL(url);
-    showToast('JSON exportado.');
+    showToast('Archivo descargado. Reemplaza src/data/activities.json en el proyecto.');
   }
 
   function handleImport(e) {
@@ -100,11 +89,13 @@ export default function Admin() {
     reader.onload = (ev) => {
       try {
         const parsed = JSON.parse(ev.target.result);
-        if (!Array.isArray(parsed)) throw new Error('El archivo debe contener un array.');
+        if (!Array.isArray(parsed)) throw new Error('El archivo debe contener un array JSON.');
         const valid = parsed.every((item) => item.title && item.dates && item.desc);
-        if (!valid) throw new Error('Cada actividad debe tener title, dates y desc.');
-        persist(parsed);
-        showToast(`${parsed.length} actividad(es) importada(s).`);
+        if (!valid) throw new Error('Cada entrada debe tener title, dates y desc.');
+        setActivities(parsed);
+        setForm(emptyForm);
+        setEditingId(null);
+        showToast(`${parsed.length} actividad(es) cargada(s) en el editor.`);
       } catch (err) {
         alert('Error al importar: ' + err.message);
       }
@@ -114,31 +105,30 @@ export default function Admin() {
   }
 
   function handleReset() {
-    if (!window.confirm('¿Restaurar las actividades originales del código? Se perderán los cambios guardados.')) return;
-    resetActivities();
+    if (!window.confirm('¿Descartar todos los cambios y volver al JSON actual del proyecto?')) return;
     setActivities(defaultActivities);
     setForm(emptyForm);
     setEditingId(null);
-    showToast('Actividades restauradas.');
+    showToast('Cambios descartados.');
   }
 
   if (!authenticated) {
     return (
-      <div style={styles.loginPage}>
-        <div style={styles.loginBox}>
-          <div style={styles.loginLogo}>MCJ</div>
-          <h2 style={styles.loginTitle}>Panel de administración</h2>
-          <form onSubmit={handleLogin} style={styles.loginForm}>
+      <div style={s.loginPage}>
+        <div style={s.loginBox}>
+          <div style={s.pill}>MCJ</div>
+          <h2 style={s.loginTitle}>Panel de administración</h2>
+          <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <input
               type="password"
               placeholder="Contraseña"
               value={passwordInput}
               onChange={(e) => { setPasswordInput(e.target.value); setPasswordError(false); }}
-              style={{ ...styles.input, ...(passwordError ? styles.inputError : {}) }}
+              style={{ ...s.input, ...(passwordError ? { borderColor: '#8B1E2B' } : {}) }}
               autoFocus
             />
-            {passwordError && <p style={styles.errorMsg}>Contraseña incorrecta.</p>}
-            <button type="submit" style={styles.btnPrimary}>Entrar</button>
+            {passwordError && <p style={{ margin: 0, fontSize: 13, color: '#8B1E2B' }}>Contraseña incorrecta.</p>}
+            <button type="submit" style={s.btnRed}>Entrar</button>
           </form>
         </div>
       </div>
@@ -146,99 +136,99 @@ export default function Admin() {
   }
 
   return (
-    <div style={styles.page}>
-      {toast && <div style={styles.toast}>{toast}</div>}
+    <div style={s.page}>
+      {toast && <div style={s.toast}>{toast}</div>}
 
-      <header style={styles.header}>
-        <div style={styles.headerInner}>
-          <div>
-            <span style={styles.headerLogo}>MCJ</span>
-            <span style={styles.headerTitle}>Panel de actividades</span>
+      <header style={s.header}>
+        <div style={s.headerInner}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={s.pill}>MCJ</div>
+            <span style={{ color: '#fff', fontWeight: 600, fontSize: 15 }}>Gestión de actividades</span>
           </div>
-          <div style={styles.headerActions}>
-            <label style={styles.btnSecondary} title="Importar JSON">
+          <div style={s.headerActions}>
+            <label style={s.btnOutlineLight} title="Cargar un activities.json para editarlo">
               Importar JSON
               <input type="file" accept=".json" onChange={handleImport} style={{ display: 'none' }} />
             </label>
-            <button onClick={handleExport} style={styles.btnSecondary}>Exportar JSON</button>
-            <button onClick={handleReset} style={styles.btnDanger}>Restaurar</button>
+            <button onClick={handleExport} style={s.btnOutlineLight}>Exportar JSON</button>
+            <button onClick={handleReset} style={s.btnOutlineDanger}>Descartar cambios</button>
           </div>
         </div>
       </header>
 
-      <main style={styles.main}>
-        <section style={styles.card}>
-          <h2 style={styles.sectionTitle}>
+      <div style={s.notice}>
+        <strong>Flujo de trabajo:</strong> edita las actividades abajo → <em>Exportar JSON</em> → reemplaza <code>src/data/activities.json</code> en el proyecto → sube los cambios.
+      </div>
+
+      <main style={s.main}>
+        <section style={s.card}>
+          <h2 style={s.cardTitle}>
             {editingId !== null ? 'Editar actividad' : 'Nueva actividad'}
           </h2>
-          <form onSubmit={handleSubmit} style={styles.form}>
-            <div style={styles.formRow}>
-              <div style={styles.formGroup}>
-                <label style={styles.label}>Título *</label>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flex: 1, minWidth: 220 }}>
+                <label style={s.label}>Título *</label>
                 <input
                   name="title"
                   value={form.title}
                   onChange={handleFormChange}
                   placeholder="Ej: Levántate y sé Hombre"
-                  style={styles.input}
+                  style={s.input}
                   required
                 />
               </div>
-              <div style={{ ...styles.formGroup, maxWidth: 220 }}>
-                <label style={styles.label}>Fechas *</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: 220 }}>
+                <label style={s.label}>Fechas *</label>
                 <input
                   name="dates"
                   value={form.dates}
                   onChange={handleFormChange}
                   placeholder="Ej: 28 - 30 Agosto"
-                  style={styles.input}
+                  style={s.input}
                   required
                 />
               </div>
             </div>
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Descripción *</label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <label style={s.label}>Descripción *</label>
               <textarea
                 name="desc"
                 value={form.desc}
                 onChange={handleFormChange}
                 placeholder="Descripción de la actividad..."
-                style={styles.textarea}
+                style={s.textarea}
                 rows={3}
                 required
               />
             </div>
-            <div style={styles.formActions}>
-              <button type="submit" style={styles.btnPrimary}>
-                {editingId !== null ? 'Guardar cambios' : 'Agregar actividad'}
+            <div style={{ display: 'flex', gap: 10 }}>
+              <button type="submit" style={s.btnRed}>
+                {editingId !== null ? 'Guardar cambios' : 'Agregar'}
               </button>
               {editingId !== null && (
-                <button type="button" onClick={handleCancel} style={styles.btnSecondary}>
-                  Cancelar
-                </button>
+                <button type="button" onClick={handleCancel} style={s.btnGhost}>Cancelar</button>
               )}
             </div>
           </form>
         </section>
 
-        <section style={styles.card}>
-          <h2 style={styles.sectionTitle}>
-            Actividades ({activities.length})
-          </h2>
+        <section style={s.card}>
+          <h2 style={s.cardTitle}>Actividades en el editor ({activities.length})</h2>
           {activities.length === 0 ? (
-            <p style={{ color: '#888', marginTop: 8 }}>No hay actividades. Agrega una arriba.</p>
+            <p style={{ color: '#888', margin: '8px 0 0' }}>No hay actividades. Agrega una arriba.</p>
           ) : (
-            <ul style={styles.list}>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
               {activities.map((act) => (
-                <li key={act.id} style={styles.listItem}>
-                  <div style={styles.listItemBody}>
-                    <div style={styles.listItemDates}>{act.dates}</div>
-                    <div style={styles.listItemTitle}>{act.title}</div>
-                    <div style={styles.listItemDesc}>{act.desc}</div>
+                <li key={act.id} style={s.listItem}>
+                  <div style={{ flex: 1 }}>
+                    <div style={s.itemDates}>{act.dates}</div>
+                    <div style={s.itemTitle}>{act.title}</div>
+                    <div style={s.itemDesc}>{act.desc}</div>
                   </div>
-                  <div style={styles.listItemActions}>
-                    <button onClick={() => handleEdit(act)} style={styles.btnEdit}>Editar</button>
-                    <button onClick={() => handleDelete(act.id)} style={styles.btnDeleteSm}>Eliminar</button>
+                  <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+                    <button onClick={() => handleEdit(act)} style={s.btnDark}>Editar</button>
+                    <button onClick={() => handleDelete(act.id)} style={s.btnDeleteSm}>Eliminar</button>
                   </div>
                 </li>
               ))}
@@ -250,7 +240,7 @@ export default function Admin() {
   );
 }
 
-const styles = {
+const s = {
   page: {
     minHeight: '100vh',
     background: '#f4f4f5',
@@ -270,30 +260,14 @@ const styles = {
     padding: '40px 36px',
     width: '100%',
     maxWidth: 360,
-    boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
     textAlign: 'center',
-  },
-  loginLogo: {
-    display: 'inline-block',
-    background: '#8B1E2B',
-    color: '#fff',
-    fontWeight: 700,
-    fontSize: 18,
-    letterSpacing: 2,
-    padding: '6px 14px',
-    borderRadius: 6,
-    marginBottom: 16,
   },
   loginTitle: {
     margin: '0 0 24px',
     fontSize: 20,
     color: '#14293A',
     fontWeight: 700,
-  },
-  loginForm: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 12,
   },
   header: {
     background: '#14293A',
@@ -303,7 +277,7 @@ const styles = {
     zIndex: 100,
   },
   headerInner: {
-    maxWidth: 900,
+    maxWidth: 860,
     margin: '0 auto',
     display: 'flex',
     alignItems: 'center',
@@ -311,28 +285,21 @@ const styles = {
     height: 60,
     gap: 16,
   },
-  headerLogo: {
-    background: '#8B1E2B',
-    color: '#fff',
-    fontWeight: 700,
-    fontSize: 13,
-    letterSpacing: 2,
-    padding: '3px 8px',
-    borderRadius: 4,
-    marginRight: 12,
-  },
-  headerTitle: {
-    color: '#fff',
-    fontWeight: 600,
-    fontSize: 15,
-  },
   headerActions: {
     display: 'flex',
     gap: 8,
     flexWrap: 'wrap',
   },
+  notice: {
+    background: '#fef9ec',
+    borderBottom: '1px solid #e9d88a',
+    padding: '10px 24px',
+    fontSize: 13,
+    color: '#6b5a1a',
+    textAlign: 'center',
+  },
   main: {
-    maxWidth: 900,
+    maxWidth: 860,
     margin: '32px auto',
     padding: '0 24px',
     display: 'flex',
@@ -345,28 +312,11 @@ const styles = {
     padding: '28px 32px',
     boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
   },
-  sectionTitle: {
+  cardTitle: {
     margin: '0 0 20px',
     fontSize: 17,
     fontWeight: 700,
     color: '#14293A',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 16,
-  },
-  formRow: {
-    display: 'flex',
-    gap: 16,
-    flexWrap: 'wrap',
-  },
-  formGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 6,
-    flex: 1,
-    minWidth: 200,
   },
   label: {
     fontSize: 13,
@@ -382,10 +332,6 @@ const styles = {
     outline: 'none',
     width: '100%',
     fontFamily: 'inherit',
-    transition: 'border-color 0.15s',
-  },
-  inputError: {
-    borderColor: '#8B1E2B',
   },
   textarea: {
     padding: '10px 14px',
@@ -398,18 +344,16 @@ const styles = {
     fontFamily: 'inherit',
     resize: 'vertical',
   },
-  formActions: {
-    display: 'flex',
-    gap: 10,
-    flexWrap: 'wrap',
-  },
-  errorMsg: {
-    margin: 0,
+  pill: {
+    background: '#8B1E2B',
+    color: '#fff',
+    fontWeight: 700,
     fontSize: 13,
-    color: '#8B1E2B',
-    textAlign: 'left',
+    letterSpacing: 2,
+    padding: '4px 10px',
+    borderRadius: 5,
   },
-  btnPrimary: {
+  btnRed: {
     padding: '10px 22px',
     background: '#8B1E2B',
     color: '#fff',
@@ -420,8 +364,19 @@ const styles = {
     cursor: 'pointer',
     fontFamily: 'inherit',
   },
-  btnSecondary: {
-    padding: '8px 16px',
+  btnGhost: {
+    padding: '10px 18px',
+    background: 'transparent',
+    color: '#555',
+    border: '1.5px solid #d1d5db',
+    borderRadius: 7,
+    fontWeight: 600,
+    fontSize: 14,
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  },
+  btnOutlineLight: {
+    padding: '7px 14px',
     background: 'transparent',
     color: '#e2e8f0',
     border: '1.5px solid rgba(255,255,255,0.3)',
@@ -433,8 +388,8 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
   },
-  btnDanger: {
-    padding: '8px 16px',
+  btnOutlineDanger: {
+    padding: '7px 14px',
     background: 'transparent',
     color: '#fca5a5',
     border: '1.5px solid rgba(252,165,165,0.4)',
@@ -444,50 +399,7 @@ const styles = {
     cursor: 'pointer',
     fontFamily: 'inherit',
   },
-  list: {
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 12,
-  },
-  listItem: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    gap: 16,
-    padding: '16px 0',
-    borderBottom: '1px solid #f0f0f0',
-  },
-  listItemBody: {
-    flex: 1,
-  },
-  listItemDates: {
-    fontSize: 12,
-    fontWeight: 600,
-    color: '#C79A2B',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    marginBottom: 4,
-  },
-  listItemTitle: {
-    fontWeight: 700,
-    fontSize: 15,
-    color: '#14293A',
-    marginBottom: 4,
-  },
-  listItemDesc: {
-    fontSize: 13,
-    color: '#666',
-    lineHeight: 1.5,
-  },
-  listItemActions: {
-    display: 'flex',
-    gap: 8,
-    flexShrink: 0,
-  },
-  btnEdit: {
+  btnDark: {
     padding: '6px 14px',
     background: '#14293A',
     color: '#fff',
@@ -509,6 +421,33 @@ const styles = {
     cursor: 'pointer',
     fontFamily: 'inherit',
   },
+  listItem: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    gap: 16,
+    padding: '16px 0',
+    borderBottom: '1px solid #f0f0f0',
+  },
+  itemDates: {
+    fontSize: 11,
+    fontWeight: 700,
+    color: '#C79A2B',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    marginBottom: 4,
+  },
+  itemTitle: {
+    fontWeight: 700,
+    fontSize: 15,
+    color: '#14293A',
+    marginBottom: 4,
+  },
+  itemDesc: {
+    fontSize: 13,
+    color: '#666',
+    lineHeight: 1.5,
+  },
   toast: {
     position: 'fixed',
     bottom: 24,
@@ -522,5 +461,6 @@ const styles = {
     zIndex: 1000,
     boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
     fontFamily: "'Manrope', sans-serif",
+    maxWidth: 380,
   },
 };

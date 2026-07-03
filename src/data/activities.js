@@ -1,5 +1,0 @@
-export const activities = [
-  { id: 1, title: 'Levántate y sé Hombre', dates: '28 - 30 Agosto', desc: 'Un taller sin rodeos sobre asumir la responsabilidad y el liderazgo servicial en la familia, forjar amistades de hierro, dignificar el trabajo y vivir una fe que no se acobarda.' },
-];
-
-export const featuredActivity = activities[0];

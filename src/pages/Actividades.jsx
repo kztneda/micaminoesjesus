@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { getActivities } from '../data/activitiesStore';
+import activitiesData from '../data/activities.json';
 
 export default function Actividades() {
   const navigate = useNavigate();
-  const activities = getActivities();
+  const activities = activitiesData;
 
   return (
     <>

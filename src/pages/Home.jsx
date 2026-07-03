@@ -1,12 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import heroImage from '../assets/images/hero.webp';
 import isotipo from '../assets/logos/isotipo.png';
-import { getActivities } from '../data/activitiesStore';
+import activitiesData from '../data/activities.json';
 
 export default function Home() {
   const navigate = useNavigate();
-  const activities = getActivities();
-  const featuredActivity = activities[0];
+  const featuredActivity = activitiesData[0];
 
   return (
     <>
