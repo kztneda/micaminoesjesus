@@ -5,7 +5,7 @@ import activitiesData from '../data/activities.json';
 
 export default function Home() {
   const navigate = useNavigate();
-  const featuredActivity = activitiesData[0];
+  const featuredActivity = activitiesData.find((a) => a.starred && a.stat === 'active');
 
   return (
     <>

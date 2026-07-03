@@ -3,7 +3,7 @@ import activitiesData from '../data/activities.json';
 
 export default function Actividades() {
   const navigate = useNavigate();
-  const activities = activitiesData;
+  const activities = activitiesData.filter((a) => a.stat === 'active');
 
   return (
     <>
@@ -25,7 +25,10 @@ export default function Actividades() {
           <div className="activity-grid">
             {activities.map((act) => (
               <div className="activity-card" key={act.id}>
-                <div style={{ background: 'var(--color-bg-alt)', height: 190 }} />
+                {act.img
+                  ? <img src={act.img} alt={act.title} style={{ width: '100%', height: 190, objectFit: 'cover', display: 'block' }} />
+                  : <div style={{ background: 'var(--color-bg-alt)', height: 190 }} />
+                }
                 <div className="activity-card__body">
                   <div className="activity-card__date">{act.dates}</div>
                   <h3>{act.title}</h3>

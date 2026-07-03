@@ -3,7 +3,7 @@ import defaultActivities from '../data/activities.json';
 
 const ADMIN_PASSWORD = 'mcj@2025';
 
-const emptyForm = { title: '', dates: '', desc: '' };
+const emptyForm = { title: '', dates: '', img: '', desc: '', stat: 'active', starred: false };
 
 export default function Admin() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -30,7 +30,8 @@ export default function Admin() {
   }
 
   function handleFormChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, type, checked, value } = e.target;
+    setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
   }
 
   function handleSubmit(e) {
@@ -52,7 +53,14 @@ export default function Admin() {
 
   function handleEdit(act) {
     setEditingId(act.id);
-    setForm({ title: act.title, dates: act.dates, desc: act.desc });
+    setForm({
+      title: act.title,
+      dates: act.dates,
+      img: act.img || '',
+      desc: act.desc,
+      stat: act.stat || 'active',
+      starred: act.starred || false,
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -178,7 +186,7 @@ export default function Admin() {
                   required
                 />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: 220 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: 200 }}>
                 <label style={s.label}>Fechas *</label>
                 <input
                   name="dates"
@@ -191,6 +199,16 @@ export default function Admin() {
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              <label style={s.label}>Imagen (ruta)</label>
+              <input
+                name="img"
+                value={form.img}
+                onChange={handleFormChange}
+                placeholder="Ej: /src/assets/images/retiro-nombre.webp"
+                style={s.input}
+              />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               <label style={s.label}>Descripción *</label>
               <textarea
                 name="desc"
@@ -201,6 +219,25 @@ export default function Admin() {
                 rows={3}
                 required
               />
+            </div>
+            <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <label style={s.label}>Estado</label>
+                <select name="stat" value={form.stat} onChange={handleFormChange} style={s.select}>
+                  <option value="active">Activa (visible)</option>
+                  <option value="inactive">Inactiva (oculta)</option>
+                </select>
+              </div>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', marginTop: 20 }}>
+                <input
+                  type="checkbox"
+                  name="starred"
+                  checked={form.starred}
+                  onChange={handleFormChange}
+                  style={{ width: 16, height: 16, cursor: 'pointer' }}
+                />
+                <span style={s.label}>Destacar en inicio</span>
+              </label>
             </div>
             <div style={{ display: 'flex', gap: 10 }}>
               <button type="submit" style={s.btnRed}>
@@ -222,6 +259,12 @@ export default function Admin() {
               {activities.map((act) => (
                 <li key={act.id} style={s.listItem}>
                   <div style={{ flex: 1 }}>
+                    <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginBottom: 6 }}>
+                      <span style={act.stat === 'active' ? s.badgeActive : s.badgeInactive}>
+                        {act.stat === 'active' ? 'Activa' : 'Inactiva'}
+                      </span>
+                      {act.starred && <span style={s.badgeStarred}>★ Inicio</span>}
+                    </div>
                     <div style={s.itemDates}>{act.dates}</div>
                     <div style={s.itemTitle}>{act.title}</div>
                     <div style={s.itemDesc}>{act.desc}</div>
@@ -462,5 +505,40 @@ const s = {
     boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
     fontFamily: "'Manrope', sans-serif",
     maxWidth: 380,
+  },
+  select: {
+    padding: '10px 14px',
+    borderRadius: 7,
+    border: '1.5px solid #d1d5db',
+    fontSize: 14,
+    color: '#14293A',
+    outline: 'none',
+    fontFamily: 'inherit',
+    background: '#fff',
+    cursor: 'pointer',
+  },
+  badgeActive: {
+    fontSize: 11,
+    fontWeight: 700,
+    color: '#166534',
+    background: '#dcfce7',
+    borderRadius: 4,
+    padding: '2px 8px',
+  },
+  badgeInactive: {
+    fontSize: 11,
+    fontWeight: 700,
+    color: '#6b7280',
+    background: '#f3f4f6',
+    borderRadius: 4,
+    padding: '2px 8px',
+  },
+  badgeStarred: {
+    fontSize: 11,
+    fontWeight: 700,
+    color: '#92400e',
+    background: '#fef3c7',
+    borderRadius: 4,
+    padding: '2px 8px',
   },
 };
