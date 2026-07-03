@@ -17,12 +17,7 @@ export default function Header() {
       <nav className="site-nav">
         <NavLink to="/" end className={linkClass}>Inicio</NavLink>
         <NavLink to="/nosotros" className={linkClass}>Nosotros</NavLink>
-        <NavLink
-          to="/actividades"
-          className={({ isActive }) => `site-nav__link site-nav__link--hidden${isActive ? ' is-active' : ''}`}
-        >
-          Actividades
-        </NavLink>
+        <NavLink to="/actividades" className={linkClass}>Actividades</NavLink>
         <NavLink to="/proyectos" className={linkClass}>Proyectos</NavLink>
         <NavLink to="/contacto" className="site-nav__cta">Contacto</NavLink>
       </nav>

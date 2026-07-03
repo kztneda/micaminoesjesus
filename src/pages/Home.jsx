@@ -76,9 +76,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Actividades teaser — kept hidden alongside the rest of the Actividades
-          section per the client's request; markup stays intact for reactivation. */}
-      <section className="section section--alt" style={{ display: 'none' }}>
+      <section className="section section--alt">
         <div className="teaser-card">
           <div>
             <div className="teaser-card__tag">Próxima actividad</div>
