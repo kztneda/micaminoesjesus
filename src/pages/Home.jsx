@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import heroImage from '../assets/images/hero.webp';
 import isotipo from '../assets/logos/isotipo.png';
-import { featuredActivity } from '../data/activities';
+import { getActivities } from '../data/activitiesStore';
 
 export default function Home() {
   const navigate = useNavigate();
+  const activities = getActivities();
+  const featuredActivity = activities[0];
 
   return (
     <>
@@ -76,19 +78,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--alt">
-        <div className="teaser-card">
-          <div>
-            <div className="teaser-card__tag">Próxima actividad</div>
-            <h3>{featuredActivity.title}</h3>
-            <div className="teaser-card__dates">{featuredActivity.dates}</div>
-            <p>{featuredActivity.desc}</p>
+      {featuredActivity && (
+        <section className="section section--alt">
+          <div className="teaser-card">
+            <div>
+              <div className="teaser-card__tag">Próxima actividad</div>
+              <h3>{featuredActivity.title}</h3>
+              <div className="teaser-card__dates">{featuredActivity.dates}</div>
+              <p>{featuredActivity.desc}</p>
+            </div>
+            <button className="btn btn-dark" onClick={() => navigate('/actividades')}>
+              Ver todas las actividades →
+            </button>
           </div>
-          <button className="btn btn-dark" onClick={() => navigate('/actividades')}>
-            Ver todas las actividades →
-          </button>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

@@ -6,6 +6,7 @@ import Actividades from './pages/Actividades';
 import Proyectos from './pages/Proyectos';
 import ProyectoDetalle from './pages/ProyectoDetalle';
 import Contacto from './pages/Contacto';
+import Admin from './pages/Admin';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/proyectos/:id" element={<ProyectoDetalle />} />
         <Route path="/contacto" element={<Contacto />} />
       </Route>
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 }

@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { activities } from '../data/activities';
+import { getActivities } from '../data/activitiesStore';
 
 export default function Actividades() {
   const navigate = useNavigate();
+  const activities = getActivities();
 
   return (
     <>
@@ -16,18 +17,24 @@ export default function Actividades() {
       </section>
 
       <section className="section">
-        <div className="activity-grid">
-          {activities.map((act) => (
-            <div className="activity-card" key={act.id}>
-              <div style={{ background: 'var(--color-bg-alt)', height: 190 }} />
-              <div className="activity-card__body">
-                <div className="activity-card__date">{act.dates}</div>
-                <h3>{act.title}</h3>
-                <p>{act.desc}</p>
+        {activities.length === 0 ? (
+          <p style={{ textAlign: 'center', color: 'var(--color-gray)', padding: '40px 0' }}>
+            Próximamente nuevas actividades. ¡Mantente al pendiente!
+          </p>
+        ) : (
+          <div className="activity-grid">
+            {activities.map((act) => (
+              <div className="activity-card" key={act.id}>
+                <div style={{ background: 'var(--color-bg-alt)', height: 190 }} />
+                <div className="activity-card__body">
+                  <div className="activity-card__date">{act.dates}</div>
+                  <h3>{act.title}</h3>
+                  <p>{act.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="cta-banner">
