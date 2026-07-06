@@ -1,6 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import activitiesData from '../data/activities.json';
 
+const activityImages = import.meta.glob('../assets/images/*.{webp,jpg,jpeg,png,avif}', { eager: true });
+const getImage = (filename) => {
+  if (!filename) return null;
+  const entry = activityImages[`../assets/images/${filename}`];
+  return entry?.default ?? null;
+};
+
 export default function Actividades() {
   const navigate = useNavigate();
   const activities = activitiesData.filter((a) => a.stat === 'active');
@@ -25,14 +32,19 @@ export default function Actividades() {
           <div className="activity-grid">
             {activities.map((act) => (
               <div className="activity-card" key={act.id}>
-                {act.img
-                  ? <img src={act.img} alt={act.title} style={{ width: '100%', height: 190, objectFit: 'cover', display: 'block' }} />
-                  : <div style={{ background: 'var(--color-bg-alt)', height: 190 }} />
+                {getImage(act.img)
+                  ? <div className="activity-card__img"><img src={getImage(act.img)} alt={act.title} /></div>
+                  : <div className="activity-card__img--placeholder" />
                 }
                 <div className="activity-card__body">
                   <div className="activity-card__date">{act.dates}</div>
                   <h3>{act.title}</h3>
                   <p>{act.desc}</p>
+                  {act.url && (
+                    <a className="btn btn-gold" href={act.url} target="_blank" rel="noopener noreferrer">
+                      Inscribirme
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
