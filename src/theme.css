@@ -10,6 +10,18 @@
   --color-gray-dark: #3d3d3d;
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Manrope', sans-serif;
+
+  /* Colores litúrgicos, usados para clasificar retiros/talleres/adoraciones por tiempo */
+  --season-ordinario: #3F7D4D;
+  --season-ordinario-bg: #E3F2E6;
+  --season-adviento: #4B3F72;
+  --season-adviento-bg: #E9E5F5;
+  --season-cuaresma: #7A2E4D;
+  --season-cuaresma-bg: #F3E3EC;
+  --season-pascua: #8A6403;
+  --season-pascua-bg: #FBF1D6;
+  --season-pentecostes: #C1272D;
+  --season-pentecostes-bg: #FBE2E1;
 }
 
 * {

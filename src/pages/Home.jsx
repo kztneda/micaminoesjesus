@@ -5,7 +5,8 @@ import activitiesData from '../data/activities.json';
 
 export default function Home() {
   const navigate = useNavigate();
-  const featuredActivity = activitiesData.find((a) => a.starred && a.stat === 'active');
+  //const featuredActivity = activitiesData.find((a) => a.starred && a.stat === 'active');
+  const featuredActivity = null
 
   return (
     <>
@@ -14,15 +15,17 @@ export default function Home() {
         <div className="hero__blob-bottom" />
         <div className="hero__grid">
           <div>
-            <div className="eyebrow">Escuela de Evangelización Joven</div>
+            <div className="eyebrow">Escuela de Nueva Evangelización</div>
             <h1>
               Mi Camino es
               <br />
               <span className="highlight">Jesús</span>
             </h1>
+            <p className="hero__tagline">Un punto de quiebre para el mundo actual.</p>
             <p className="lead">
-              Una escuela católica para jóvenes que buscan un encuentro real con Jesús, en
-              comunidad, formación y misión.
+              Una escuela católica de Nueva Evangelización que acompaña a jóvenes y adultos en un
+              encuentro real con Jesús, en comunidad, formación y misión — con raíz joven y un
+              corazón abierto a todo el que busca a Cristo.
             </p>
             <div className="verse-badge">&ldquo;Sé fuerte y valiente&rdquo; — Josué 1:6</div>
             <div style={{ display: 'flex', gap: 16, marginTop: 36, flexWrap: 'wrap' }}>

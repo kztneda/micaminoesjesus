@@ -1,5 +1,5 @@
 import { useNavigate, useParams, Navigate } from 'react-router-dom';
-import { getRetreatById } from '../data/retreats';
+import { getRetreatById, SEQUENCES, SEASONS } from '../data/retreats';
 
 export default function ProyectoDetalle() {
   const navigate = useNavigate();
@@ -13,6 +13,8 @@ export default function ProyectoDetalle() {
   const hasBasadoEn = !!retiro.basadoEn;
   const hasVerses = !!(retiro.verses && retiro.verses.length);
   const hasChips = !!(retiro.chips && retiro.chips.length);
+  const sequenceInfo = retiro.sequence ? SEQUENCES[retiro.sequence] : null;
+  const hasSecondarySeasons = !!(retiro.seasonSecondary && retiro.seasonSecondary.length);
 
   return (
     <>
@@ -22,7 +24,24 @@ export default function ProyectoDetalle() {
         </button>
         <div className="detalle-header">
           <div className="detalle-tag">{retiro.category} · XP Project</div>
+          {sequenceInfo && (
+            <div className="detalle-sequence">
+              {sequenceInfo.name} · {sequenceInfo.subtitle} — Paso {retiro.sequenceStep} de {sequenceInfo.total}
+              {retiro.sequenceTheme ? ` · ${retiro.sequenceTheme}` : ''}
+            </div>
+          )}
           <h1>{retiro.title}</h1>
+          <div className="detalle-seasons">
+            <span className={`badge-season badge-season--${retiro.season}`}>
+              {SEASONS[retiro.season].name}
+            </span>
+            {hasSecondarySeasons &&
+              retiro.seasonSecondary.map((s) => (
+                <span key={s} className={`badge-season badge-season--secondary badge-season--${s}`}>
+                  {SEASONS[s].name}
+                </span>
+              ))}
+          </div>
           {hasBasadoEn && <p className="detalle-basado">Basado en {retiro.basadoEn}</p>}
           <p className="detalle-concepto">{retiro.conceptoCentral}</p>
         </div>

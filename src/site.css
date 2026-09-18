@@ -255,6 +255,16 @@
   z-index: -1;
 }
 
+.hero__tagline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2.4vw, 24px);
+  color: var(--color-red);
+  line-height: 1.35;
+  margin: 18px 0 0;
+  max-width: 520px;
+}
+
 .hero p.lead {
   font-size: clamp(17px, 2vw, 20px);
   color: var(--color-gray);
@@ -491,6 +501,139 @@
   line-height: 1.4;
   margin: 14px 0 0;
   position: relative;
+}
+
+/* Misión / Visión / Objetivos */
+.mvo-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.mvo-card {
+  background: var(--color-ink);
+  color: #fff;
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 36px);
+  position: relative;
+  overflow: hidden;
+}
+
+.mvo-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(199, 154, 43, 0.16);
+}
+
+.mvo-card__label {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-gold);
+  position: relative;
+}
+
+.mvo-card p {
+  font-family: var(--font-display);
+  font-size: clamp(16px, 2vw, 18px);
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 14px 0 0;
+  position: relative;
+}
+
+.mvo-card ul {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Section heading (mid-page) */
+.section-heading {
+  max-width: 1200px;
+  margin: 0 auto clamp(24px, 3vw, 36px);
+  text-align: center;
+}
+
+.section-heading h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 3.5vw, 34px);
+  margin: 10px 0 0;
+}
+
+/* Nuestro equipo */
+.team-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-card__photo {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--color-cream);
+}
+
+.team-card__photo--placeholder {
+  background: var(--color-bg-alt);
+  color: var(--color-red);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.team-card__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-ink);
+}
+
+.team-card__role {
+  font-size: 13px;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
 }
 
 /* Activities */
@@ -748,6 +891,66 @@
   color: var(--color-red);
 }
 
+.season-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0 0 22px;
+}
+
+.season-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-gray);
+}
+
+.season-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.season-dot--ordinario { background: var(--season-ordinario); }
+.season-dot--adviento { background: var(--season-adviento); }
+.season-dot--cuaresma { background: var(--season-cuaresma); }
+.season-dot--pascua { background: var(--season-pascua); }
+.season-dot--pentecostes { background: var(--season-pentecostes); }
+
+.badge-season {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.badge-season--secondary {
+  font-weight: 600;
+  padding: 4px 10px;
+  background: transparent !important;
+  border: 1px solid currentColor;
+}
+.badge-season--ordinario { color: var(--season-ordinario); background: var(--season-ordinario-bg); }
+.badge-season--adviento { color: var(--season-adviento); background: var(--season-adviento-bg); }
+.badge-season--cuaresma { color: var(--season-cuaresma); background: var(--season-cuaresma-bg); }
+.badge-season--pascua { color: var(--season-pascua); background: var(--season-pascua-bg); }
+.badge-season--pentecostes { color: var(--season-pentecostes); background: var(--season-pentecostes-bg); }
+
+.detalle-seasons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
 /* Retiro detalle */
 .detalle-back {
   cursor: pointer;
@@ -781,6 +984,16 @@
   background: var(--color-cream);
   padding: 6px 14px;
   border-radius: 999px;
+}
+
+.detalle-sequence {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-gray);
 }
 
 .detalle-header h1 {

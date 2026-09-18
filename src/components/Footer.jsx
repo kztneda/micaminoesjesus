@@ -31,7 +31,7 @@ export default function Footer() {
       </div>
       <div className="site-footer__bottom">
         <span>© 2026 Mi Camino es Jesús</span>
-        <span>Escuela de Evangelización Joven</span>
+        <span>Escuela de Nueva Evangelización</span>
       </div>
     </footer>
   );
