@@ -2017,6 +2017,17 @@
   background: var(--color-cream);
   border-color: rgba(199, 154, 43, 0.4);
 }
+.xplev-timeline__content.is-clickable {
+  cursor: pointer;
+}
+.xplev-timeline__content.is-clickable:hover {
+  border-color: var(--color-red);
+  box-shadow: 0 2px 10px rgba(20, 41, 58, 0.08);
+}
+.xplev-timeline__content.is-clickable:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
 
 .xplev-timeline__row {
   display: flex;
@@ -2046,22 +2057,6 @@
   color: var(--color-gray);
   margin-top: 6px;
   flex-wrap: wrap;
-}
-
-.xplev-timeline__cta {
-  margin-top: 10px;
-  background: var(--color-red);
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-}
-.xplev-timeline__cta:hover {
-  background: var(--color-ink);
 }
 
 /* Píldoras de estado */
@@ -2140,6 +2135,17 @@
   background: var(--color-cream);
   border-color: rgba(199, 154, 43, 0.5);
 }
+.xplev-hito.is-clickable {
+  cursor: pointer;
+}
+.xplev-hito.is-clickable:hover {
+  border-color: var(--color-gold);
+  box-shadow: 0 2px 10px rgba(20, 41, 58, 0.08);
+}
+.xplev-hito.is-clickable:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
 
 .xplev-hito__top {
   display: flex;
@@ -2190,17 +2196,6 @@
   align-items: center;
 }
 
-.xplev-hito__link {
-  color: var(--color-red);
-  font-weight: 700;
-  text-decoration: underline;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: 10.5px;
-}
 
 .xplev-oz-footnote {
   margin-top: 24px;
@@ -2295,6 +2290,31 @@
 .xplev-chip:hover {
   border-color: var(--color-gold);
   background: var(--color-cream);
+}
+.xplev-chip.is-pending {
+  background: transparent;
+  border: 1px dashed rgba(20, 41, 58, 0.28);
+  color: var(--color-gray);
+  font-weight: 600;
+  cursor: pointer;
+}
+.xplev-chip.is-pending:hover {
+  border-color: var(--color-gold);
+  background: var(--color-cream);
+}
+.xplev-chip__pending {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-gray);
+  background: var(--color-bg-alt);
+  border-radius: 999px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+.xplev-chip.is-pending .xplev-chip__pending {
+  background: rgba(20, 41, 58, 0.08);
 }
 
 /* Banner CTA de cierre — parrafo y botones extra sobre .cta-banner existente */

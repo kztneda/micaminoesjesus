@@ -93,7 +93,18 @@ function DerejSequentialCard({ sequenceKey, colorVar, items, navigate }) {
           return (
             <div key={item.id} className={`xplev-timeline__step${isPending ? ' is-pending' : ''}`}>
               <span className={`xplev-timeline__node${isPending ? '' : ' is-active'}`}>{item.paso}</span>
-              <div className={`xplev-timeline__content${isPending ? '' : ' is-active'}`}>
+              <div
+                className={`xplev-timeline__content is-clickable${isPending ? '' : ' is-active'}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate(`/proyectos/${item.id}`)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate(`/proyectos/${item.id}`);
+                  }
+                }}
+              >
                 <div className="xplev-timeline__row">
                   <div className="xplev-timeline__title-group">
                     <TipoTag tipo={item.tipo} category={item.category} />
@@ -106,11 +117,6 @@ function DerejSequentialCard({ sequenceKey, colorVar, items, navigate }) {
                   <span>{SEASONS[item.season]?.name}</span>
                   {item.conceptoCentral && <span>• {item.conceptoCentral}</span>}
                 </div>
-                {!isPending && (
-                  <button className="xplev-timeline__cta" onClick={() => navigate(`/proyectos/${item.id}`)}>
-                    Ver ficha y temario
-                  </button>
-                )}
               </div>
             </div>
           );
@@ -156,7 +162,19 @@ function DerejOzCard({ items, navigate }) {
         {items.map((item) => {
           const isPending = item.estado === 'proximamente';
           return (
-            <div key={item.id} className={`xplev-hito${isPending ? ' is-pending' : ' is-active'}`}>
+            <div
+              key={item.id}
+              className={`xplev-hito is-clickable${isPending ? ' is-pending' : ' is-active'}`}
+              role="button"
+              tabIndex={0}
+              onClick={() => navigate(`/proyectos/${item.id}`)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  navigate(`/proyectos/${item.id}`);
+                }
+              }}
+            >
               <div>
                 <div className="xplev-hito__top">
                   <span className="xplev-hito__num">{String(item.paso).padStart(2, '0')}</span>
@@ -170,13 +188,7 @@ function DerejOzCard({ items, navigate }) {
               </div>
               <div className="xplev-hito__footer">
                 <span>{TIPO_LABELS[item.tipo] || 'Estación'}</span>
-                {isPending ? (
-                  <span>#{item.paso}</span>
-                ) : (
-                  <button className="xplev-hito__link" onClick={() => navigate(`/proyectos/${item.id}`)}>
-                    Ver programa →
-                  </button>
-                )}
+                {isPending && <span>#{item.paso}</span>}
               </div>
             </div>
           );
@@ -258,6 +270,7 @@ function DerejSimjaCard({ items, navigate }) {
                 >
                   <SeasonDot season={item.season} />
                   {item.title}
+                  {isPending && <span className="xplev-chip__pending">Próximamente</span>}
                 </button>
               );
             })}
@@ -312,6 +325,7 @@ function DerejOpenCatalogCard({ derejKey, colorVar, items, description, navigate
                 >
                   <SeasonDot season={item.season} />
                   {item.title}
+                  {isPending && <span className="xplev-chip__pending">Próximamente</span>}
                 </button>
               );
             })}
