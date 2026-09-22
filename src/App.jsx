@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Nosotros from './pages/Nosotros';
 import Actividades from './pages/Actividades';
 import Proyectos from './pages/Proyectos';
+import XpLev from './pages/XpLev';
 import ProyectoDetalle from './pages/ProyectoDetalle';
 import Contacto from './pages/Contacto';
 import Admin from './pages/Admin';
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/actividades" element={<Actividades />} />
         <Route path="/proyectos" element={<Proyectos />} />
+        <Route path="/proyectos/xp-lev" element={<XpLev />} />
         <Route path="/proyectos/:id" element={<ProyectoDetalle />} />
         <Route path="/contacto" element={<Contacto />} />
       </Route>

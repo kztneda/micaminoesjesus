@@ -20,7 +20,7 @@ const team = [
   },
   {
     name: 'Pbro. Lic. Theol. Cristopher Cortés Pliego',
-    role: 'Asesor Espiritual',
+    role: 'Fundador y Asesor Espiritual',
     image: cristopherImage,
   },
 ];
@@ -43,27 +43,7 @@ export default function Nosotros() {
         <h1>Quiénes somos</h1>
       </section>
 
-      <section className="section">
-        <div className="two-col">
-          <div>
-            <p>
-              Mi Camino es Jesús nace con raíz joven, pero su vocación es más grande: ser una
-              escuela de Nueva Evangelización que acompaña a personas de toda edad en un encuentro
-              personal y transformador con Cristo, dentro de la vida de la Iglesia católica.
-            </p>
-            <p>
-              Creemos que el mundo actual necesita un punto de quiebre. Con un lenguaje directo y
-              cercano, abrimos un espacio donde la fe se vive con alegría, sin dejar de ser
-              exigente y real — para jóvenes, para adultos, y para quienes buscan un camino de
-              regreso a Cristo.
-            </p>
-            <p className="attribution">- Jehosua Castañeda</p>
-          </div>
-          <img src={nosotrosImage} alt="Comunidad en oración" />
-        </div>
-      </section>
-
-      <section style={{ padding: '0 clamp(20px,6vw,48px) clamp(40px,5vw,64px)' }}>
+      <section style={{ padding: 'clamp(20px,6vw,48px) clamp(20px,6vw,48px) clamp(40px,5vw,64px)' }}>
         <div className="mvo-grid">
           <div className="mvo-card">
             <div className="mvo-card__label">Misión</div>
@@ -92,7 +72,7 @@ export default function Nosotros() {
         </div>
       </section>
 
-      <section style={{ padding: '0 clamp(20px,6vw,48px) clamp(48px,6vw,72px)' }}>
+      <section style={{ padding: '0 clamp(20px,6vw,48px)' }}>
         <div className="info-grid">
           <div className="info-card">
             <h3>Encuentro</h3>
@@ -110,6 +90,26 @@ export default function Nosotros() {
             <h3>Misión</h3>
             <p>Salimos a anunciar lo que hemos vivido, sin miedo.</p>
           </div>
+        </div>
+      </section>      
+
+      <section className="section">
+        <div className="two-col">
+          <div>
+            <p>
+              Mi Camino es Jesús nace con raíz joven, pero su vocación es más grande: ser una
+              escuela de Nueva Evangelización que acompaña a personas de toda edad en un encuentro
+              personal y transformador con Cristo, dentro de la vida de la Iglesia católica.
+            </p>
+            <p>
+              Creemos que el mundo actual necesita un punto de quiebre. Con un lenguaje directo y
+              cercano, abrimos un espacio donde la fe se vive con alegría, sin dejar de ser
+              exigente y real — para jóvenes, para adultos, y para quienes buscan un camino de
+              regreso a Cristo.
+            </p>
+            <p className="attribution">- Jehosua Castañeda</p>
+          </div>
+          <img src={nosotrosImage} alt="Comunidad en oración" />
         </div>
       </section>
 

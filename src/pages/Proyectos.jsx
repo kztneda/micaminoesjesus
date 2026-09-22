@@ -3,11 +3,6 @@ import xpLogo from '../assets/images/xp-lev.png';
 import khlogo from '../assets/images/karposhub.png';
 import ignisLogo from '../assets/images/proyecto-ignis.webp';
 import logosLogo from '../assets/images/proyecto-ignis-et-logos.webp';
-import { retiros, talleres, adoraciones, derejGibor, derejKavod, SEQUENCES, SEASONS } from '../data/retreats';
-
-function SeasonDot({ season }) {
-  return <span className={`season-dot season-dot--${season}`} title={SEASONS[season].name} />;
-}
 
 export default function Proyectos() {
   const navigate = useNavigate();
@@ -26,118 +21,23 @@ export default function Proyectos() {
       <section className="section">
         <div className="project-list">
           <div className="project-card">
-            <img src={xpLogo} alt="Logo XP Project" />
+            <img src={xpLogo} alt="Logo XP Lev" />
             <div className="project-card__content">
               <div className="project-card__tag">Evangelización por públicos</div>
               <h3>XP Lev</h3>
               <p>
-                Retiros, talleres y adoraciones pensados para distintos públicos, cada uno una
-                experiencia de encuentro con Cristo.
+                Retiros, talleres y adoraciones pensados para distintos públicos — hombres, mujeres,
+                jóvenes, niños, servidores y comunidad — cada uno un camino (Dérej) de encuentro con
+                Cristo.
               </p>
-              <div className="season-legend">
-                {Object.entries(SEASONS).map(([key, s]) => (
-                  <span className="season-legend__item" key={key}>
-                    <SeasonDot season={key} />
-                    {s.name}
-                  </span>
-                ))}
-              </div>
-              <div className="project-card__nav-grid">
-                <div>
-                  <div className="project-card__nav-label" style={{ color: 'var(--color-red)' }}>
-                    {SEQUENCES['derej-gibor'].name}
-                    <br/>
-                    <small>{SEQUENCES['derej-gibor'].subtitle} - {SEQUENCES['derej-gibor'].audience}</small>
-                  </div>
-                  <div className="project-card__nav-list">
-                    {derejGibor.map((r) => (
-                      <button
-                        key={r.id}
-                        className="project-card__nav-link"
-                        onClick={() => navigate(`/proyectos/${r.id}`)}
-                      >
-                        <SeasonDot season={r.season} />
-                        {r.sequenceStep}. {r.title} →
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="project-card__nav-label" style={{ color: 'var(--color-red)' }}>
-                    {SEQUENCES['derej-kavod'].name}
-                    <br/>
-                    <small>{SEQUENCES['derej-kavod'].subtitle} - {SEQUENCES['derej-kavod'].audience}</small>
-                  </div>
-                  <div className="project-card__nav-list">
-                    {derejKavod.map((r) => (
-                      <button
-                        key={r.id}
-                        className="project-card__nav-link"
-                        onClick={() => navigate(`/proyectos/${r.id}`)}
-                      >
-                        <SeasonDot season={r.season} />
-                        {r.sequenceStep}. {r.title} →
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="project-card__nav-label" style={{ color: 'var(--color-red)' }}>
-                    Retiros individuales
-                  </div>
-                  <div className="project-card__nav-list">
-                    {retiros.map((r) => (
-                      <button
-                        key={r.id}
-                        className="project-card__nav-link"
-                        onClick={() => navigate(`/proyectos/${r.id}`)}
-                      >
-                        <SeasonDot season={r.season} />
-                        {r.title} →
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="project-card__nav-label" style={{ color: 'var(--color-gold)' }}>
-                    Talleres
-                  </div>
-                  <div className="project-card__nav-list">
-                    {talleres.map((t) => (
-                      <button
-                        key={t.id}
-                        className="project-card__nav-link"
-                        onClick={() => navigate(`/proyectos/${t.id}`)}
-                      >
-                        <SeasonDot season={t.season} />
-                        {t.title} →
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <div className="project-card__nav-label" style={{ color: 'var(--color-gold)' }}>
-                    Adoraciones Eucarísticas
-                  </div>
-                  <div className="project-card__nav-list">
-                    {adoraciones.map((a) => (
-                      <button
-                        key={a.id}
-                        className="project-card__nav-link"
-                        onClick={() => navigate(`/proyectos/${a.id}`)}
-                      >
-                        <SeasonDot season={a.season} />
-                        {a.title} →
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <button className="btn-link-dark" onClick={() => navigate('/proyectos/xp-lev')}>
+                Ver todos los caminos →
+              </button>
             </div>
           </div>
 
           <div className="project-card">
-            <img src={khlogo} alt="Logo XP Project" />
+            <img src={khlogo} alt="Logo XP Lev" />
             <div className="project-card__content">
               <div className="project-card__tag">Red profesional · Comunidad católica</div>
               <h3>Karpos Hub</h3>
