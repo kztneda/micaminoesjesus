@@ -39,6 +39,11 @@ import ozTomas from '../assets/images/OZ-TOMAS.jpg';
 import ozGetsemani from '../assets/images/OZ-GETSEMANI.jpg';
 import ozPentecostes from '../assets/images/OZ-PENTECOSTES.jpg';
 import jaimJesucristoNuestraEsperanza from '../assets/images/JAIM-JESUCRISTONUESTRAESPERANZA.jpg';
+import simjaBarcaDePedro from '../assets/images/SIMJA-BARCADEPEDRO.jpg';
+import simjaArcaDeNoe from '../assets/images/SIMJA-ARCADENOE.jpg';
+import simjaBuenPastor from '../assets/images/SIMJA-BUENPASTOR.jpg';
+import simjaCincoPanes from '../assets/images/SIMJA-CINCOPANES.jpg';
+import simjaZaqueo from '../assets/images/SIMJA-ZAQUEO.jpg';
 
 export const SEQUENCES = {
   'derej-gibor': { name: 'Derej Gibor', subtitle: 'Camino del Guerrero', audience: 'Hombres', total: 6 },
@@ -70,13 +75,14 @@ export const DEREJ = {
   jaim: { name: 'Dérej Jaím', subtitle: 'Camino de Vida', audience: 'Comunidad general', esquema: 'catalogo', pasoTotal: null },
 };
 
-export const TIPOS = ['taller', 'retiro', 'hora_santa', 'vivencial', 'experiencial'];
+export const TIPOS = ['taller', 'retiro', 'hora_santa', 'vivencial', 'experiencial', 'estaciones'];
 export const TIPO_LABELS = {
   taller: 'Taller',
   retiro: 'Retiro',
   hora_santa: 'Adoración',
   vivencial: 'Vivencial',
   experiencial: 'Experiencial',
+  estaciones: 'Estaciones',
 };
 // Abreviatura compacta para mostrar la categoría sin píldora en listas densas.
 export const TIPO_ABBR = {
@@ -85,6 +91,15 @@ export const TIPO_ABBR = {
   hora_santa: 'HS',
   vivencial: 'V',
   experiencial: 'E',
+  estaciones: 'Est',
+};
+
+// Corte oficial de edad de Dérej Simjá (arquitectura §5.1). 'ambos' = actividad
+// adaptable a los dos cortes sin cambios estructurales.
+export const CORTES_SIMJA = {
+  kinder: { name: 'Kínder', rango: '4-6 años' },
+  primaria: { name: 'Primaria', rango: '7-12 años' },
+  ambos: { name: 'Kínder y Primaria', rango: 'Adaptable' },
 };
 const TIPO_FROM_CATEGORY = {
   Retiro: 'retiro',
@@ -644,6 +659,79 @@ const rawRetreats = [
       { title: 'Lleno del Espíritu para tallar y construir', text: 'Dios no llena a Betsalel del Espíritu para profetizar, sino para diseñar, tallar y construir el Tabernáculo con sus propias manos. Reconocer que el talento técnico y artístico también es un don que Dios llena de sí mismo.' },
       { title: 'El servidor que nadie ve', text: 'Sonido, decoración, logística, diseño gráfico: el trabajo detrás de cámaras rara vez recibe aplausos, pero sostiene todo lo visible. Dar a estos servidores un lugar bíblico propio, no un rol "de apoyo".' },
       { title: 'Excelencia como acto de adoración', text: 'Betsalel no improvisó ni entregó lo mínimo: puso su mejor técnica al servicio del encuentro con Dios. Entender que hacer bien el trabajo técnico, con cuidado y detalle, también es una forma de adorar.' },
+    ],
+    chipsLabel: null, chips: null,
+  },
+
+  // --- Dérej Simjá · Camino de la Alegría (niños, formato Estaciones) ---
+  // Primer lote (arquitectura §5.2): corte oficial Kínder (4-6) / Primaria (7-12).
+  // Stub 'proximamente' — falta el documento formal completo (esquema de la §7:
+  // Informativo/Generales/Contenido con Estaciones detalladas/Anexos) e imagen hero.
+  {
+    id: 'barca-de-pedro', category: null, sequence: null, sequenceStep: null, sequenceTheme: null,
+    derej: 'simja', paso: null, codigo: 'SIMJA-BARCADEPEDRO', estado: 'proximamente', tipo: 'estaciones', temporadaLiturgica: null,
+    season: 'ordinario', seasonSecondary: null, corte: 'primaria',
+    title: 'La Barca de Pedro', basadoEn: 'la pesca milagrosa de Pedro (Lc 5:1-11)',
+    conceptoCentral: 'Aunque no encuentres nada por tus propias fuerzas, si confías en Jesús la red se llena.',
+    image: simjaBarcaDePedro,
+    bloques: [
+      { title: 'Un pececito cuenta la historia', text: 'Un pececito narrador que "vivió" la pesca milagrosa guía a los niños en primera persona: Pedro pescó toda la noche sin sacar nada, hasta que hizo caso a Jesús y tiró la red una vez más.' },
+      { title: 'Redes, peces y una barca de cartón', text: 'Estación física de pesca con red y peces de tela dentro de una "barca" armada en el salón, manualidad de un pez con un mensaje adentro, y cuento dramatizado del milagro, cerrando con un encuentro breve ante Jesús Eucaristía ("Ven y sígueme").' },
+      { title: 'Puente con Dérej Oz', text: 'El mismo pasaje se retoma después, más profundo, en el taller OZ-Pedro para jóvenes: el niño que vive esta historia en Simjá puede reencontrarla al crecer.' },
+    ],
+    chipsLabel: null, chips: null,
+  },
+  {
+    id: 'arca-de-noe', category: null, sequence: null, sequenceStep: null, sequenceTheme: null,
+    derej: 'simja', paso: null, codigo: 'SIMJA-ARCADENOE', estado: 'proximamente', tipo: 'estaciones', temporadaLiturgica: null,
+    season: 'ordinario', seasonSecondary: null, corte: 'kinder',
+    title: 'El Arca de Noé: Refugio Seguro', basadoEn: 'Noé y la promesa del arcoíris (Gn 6-9, versión simplificada)',
+    conceptoCentral: 'Dios cuida de mí y cumple sus promesas.',
+    image: simjaArcaDeNoe,
+    bloques: [
+      { title: 'Una paloma trae la rama de olivo', text: 'Una paloma guía a los niños de kínder por la historia sin entrar en juicio ni abstracciones sobre el pecado: solo el cuidado de Dios y la promesa concreta del arcoíris.' },
+      { title: 'Animalitos de dos en dos y un arcoíris de manos', text: 'Clasificar animalitos de peluche "de dos en dos", pintura de manos formando un arcoíris, canto con movimientos, y cierre con una oración sencilla de agradecimiento.' },
+    ],
+    chipsLabel: null, chips: null,
+  },
+  {
+    id: 'buen-pastor-ovejita-perdida', category: null, sequence: null, sequenceStep: null, sequenceTheme: null,
+    derej: 'simja', paso: null, codigo: 'SIMJA-BUENPASTOR', estado: 'proximamente', tipo: 'estaciones', temporadaLiturgica: null,
+    season: 'ordinario', seasonSecondary: null, corte: 'ambos',
+    title: 'El Buen Pastor y la Ovejita Perdida', basadoEn: 'la parábola de la oveja perdida (Lc 15:3-7)',
+    conceptoCentral: 'La Iglesia nunca deja de buscar a nadie.',
+    image: simjaBuenPastor,
+    bloques: [
+      { title: 'Talia, la ovejita que se pierde', text: 'Talia se aleja del rebaño y es buscada sin descanso — la imagen que un niño entiende sin ninguna traducción conceptual: el miedo de perderse y la alegría de ser encontrado.' },
+      { title: 'Buscar, tejer y ser cargado', text: 'Juego de "buscar la oveja perdida" escondida en el espacio, manualidad de una ovejita de algodón, dramatización con títeres del pastor buscando, y cierre donde cada niño "es cargado" simbólicamente sobre los hombros del pastor.' },
+      { title: 'Un gancho para el que se siente lejos', text: 'Ideal también con niños que vienen de familias alejadas de la fe o en procesos de primera comunión: nadie es demasiado pequeño ni está demasiado lejos para que lo busquen.' },
+    ],
+    chipsLabel: null, chips: null,
+  },
+  {
+    id: 'cinco-panes-dos-peces', category: null, sequence: null, sequenceStep: null, sequenceTheme: null,
+    derej: 'simja', paso: null, codigo: 'SIMJA-CINCOPANES', estado: 'proximamente', tipo: 'estaciones', temporadaLiturgica: null,
+    season: 'ordinario', seasonSecondary: null, corte: 'primaria',
+    title: 'Los Cinco Panes y Dos Peces', basadoEn: 'la multiplicación de los panes (Jn 6:1-13)',
+    conceptoCentral: 'Lo poco que tengo, puesto en manos de Jesús, alcanza para todos.',
+    image: simjaCincoPanes,
+    bloques: [
+      { title: 'El niño que compartió su almuerzo', text: 'Es la única historia bíblica donde el protagonista es literalmente un niño: quien participa se identifica de forma directa con él, no solo lo observa.' },
+      { title: 'Canasta de pan y reparto real', text: 'Manualidad de una "canasta de panes", juego de repartir algo (dulces, estampas) entre todo el grupo, cuento dramatizado, y cierre con reparto real de un pan bendecido.' },
+    ],
+    chipsLabel: null, chips: null,
+  },
+  {
+    id: 'zaqueo-simja', category: null, sequence: null, sequenceStep: null, sequenceTheme: null,
+    derej: 'simja', paso: null, codigo: 'SIMJA-ZAQUEO', estado: 'proximamente', tipo: 'estaciones', temporadaLiturgica: null,
+    season: 'ordinario', seasonSecondary: null, corte: 'primaria',
+    title: 'Zaqueo se Sube al Árbol', basadoEn: 'Zaqueo, el publicano de Jericó (Lc 19:1-10)',
+    conceptoCentral: 'Aunque seas pequeño y nadie te vea, Jesús te busca y te llama por tu nombre.',
+    image: simjaZaqueo,
+    bloques: [
+      { title: '"Yo era chiquito, como ustedes"', text: 'Zaqueo se narra en primera persona por su estatura, la misma que conecta literalmente con la de un niño que a menudo se siente "el chiquito" en su familia o grupo.' },
+      { title: 'Trepar para ver mejor', text: 'Trepar con seguridad a una estructura tipo "árbol" para "ver mejor", manualidad de un árbol con el nombre propio en una hoja, y cierre donde el facilitador llama a cada niño por su nombre.' },
+      { title: 'Puente con Dérej Oz', text: 'La misma figura ya tiene su propio taller en OZ-Zaqueo para jóvenes ("no hace falta que te vean para que Cristo te llame por tu nombre") — misma coherencia vertical que ya conecta Simjá y Oz a través de Pedro.' },
     ],
     chipsLabel: null, chips: null,
   },

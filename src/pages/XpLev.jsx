@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  derejGibor, derejKavod, derejMesharet, derejOz, derejJaim,
-  SEQUENCES, SEASONS, DEREJ, TIPO_LABELS, TIPO_ABBR,
+  derejGibor, derejKavod, derejMesharet, derejSimja, derejOz, derejJaim,
+  SEQUENCES, SEASONS, DEREJ, TIPO_LABELS, TIPO_ABBR, CORTES_SIMJA,
 } from '../data/retreats';
 
 const TABS = [
@@ -46,7 +46,7 @@ function groupByTipo(items) {
   const groups = order
     .map((tipo) => ({
       tipo,
-      label: `${TIPO_LABELS[tipo]}s`,
+      label: TIPO_LABELS[tipo],
       items: items.filter((item) => item.tipo === tipo),
     }))
     .filter((group) => group.items.length > 0);
@@ -55,6 +55,20 @@ function groupByTipo(items) {
     groups.push({ tipo: null, label: 'En preparación', items: rest });
   }
   return groups;
+}
+
+// Agrupa las estaciones de Dérej Simjá por corte de edad (kínder/primaria/ambos)
+// en lugar de por tipo, ya que todas comparten el mismo formato de Estaciones.
+function groupByCorte(items) {
+  const order = ['primaria', 'kinder', 'ambos'];
+  return order
+    .map((corte) => ({
+      corte,
+      label: CORTES_SIMJA[corte].name,
+      rango: CORTES_SIMJA[corte].rango,
+      items: items.filter((item) => item.corte === corte),
+    }))
+    .filter((group) => group.items.length > 0);
 }
 
 // Dérej Gibor/Kavod: secuencia obligatoria de 6 pasos, mostrada como una línea de
@@ -121,7 +135,7 @@ function DerejOzCard({ items, navigate }) {
   }, {});
   const countsLabel = ['retiro', 'taller', 'hora_santa']
     .filter((tipo) => counts[tipo])
-    .map((tipo) => `${counts[tipo]} ${TIPO_LABELS[tipo]}${counts[tipo] > 1 ? 's' : ''}`)
+    .map((tipo) => `${counts[tipo]} ${TIPO_LABELS[tipo]}${counts[tipo] > 1 ? '' : ''}`)
     .join(' · ');
 
   return (
@@ -182,28 +196,79 @@ function DerejOzCard({ items, navigate }) {
   );
 }
 
-// Dérej Simjá: aún sin estaciones publicadas — placeholder de "próximamente".
-function DerejSimjaCard({ navigate }) {
+// Dérej Simjá: catálogo de Estaciones para niños, agrupado por corte de edad
+// (Kínder/Primaria/Ambos) en vez de por tipo. Si aún no hay actividades cargadas
+// (items vacío), cae en el estado vacío original de "próximamente".
+function DerejSimjaCard({ items, navigate }) {
   const info = DEREJ.simja;
+  const groups = groupByCorte(items);
+
+  if (groups.length === 0) {
+    return (
+      <section id="xplev-simja" className="xplev-card xplev-card--wide">
+        <div className="xplev-card__header" style={{ border: 'none', marginBottom: 0 }}>
+          <div>
+            <span className="xplev-eyebrow" style={{ color: 'var(--color-red)' }}>{info.subtitle}</span>
+            <h2 className="xplev-card__title">{info.name} · {info.audience}</h2>
+            <p className="xplev-card__audience">Pedagogía bíblica, asombro y oración para infancia misionera y catequesis.</p>
+          </div>
+          <span className="xplev-open-tag">En fase de diseño pedagógico</span>
+        </div>
+        <div className="xplev-empty">
+          <div className="xplev-empty__icon">🌱</div>
+          <h3>Próximamente — Estaciones en preparación</h3>
+          <p>
+            Estamos afinando experiencias lúdicas, vivenciales y eucarísticas adaptadas a la
+            sensibilidad y etapas de maduración de los más pequeños.
+          </p>
+          <button className="btn btn-outline" style={{ marginTop: 16 }} onClick={() => navigate('/contacto')}>
+            Notificarme cuando esté listo
+          </button>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="xplev-simja" className="xplev-card xplev-card--wide">
-      <div className="xplev-card__header" style={{ border: 'none', marginBottom: 0 }}>
+      <div className="xplev-card__header">
         <div>
           <span className="xplev-eyebrow" style={{ color: 'var(--color-red)' }}>{info.subtitle}</span>
           <h2 className="xplev-card__title">{info.name} · {info.audience}</h2>
-          <p className="xplev-card__audience">Pedagogía bíblica, asombro y oración para infancia misionera y catequesis.</p>
+          <p className="xplev-card__audience">
+            Formato de Estaciones rotativas (no Taller/Retiro tradicional), organizado por corte de edad.
+          </p>
         </div>
-        <span className="xplev-open-tag">En fase de diseño pedagógico</span>
+        <span className="xplev-open-tag">En preparación</span>
       </div>
-      <div className="xplev-empty">
-        <div className="xplev-empty__icon">🌱</div>
-        <h3>Próximamente — Estaciones en preparación</h3>
-        <p>
-          Estamos afinando experiencias lúdicas, vivenciales y eucarísticas adaptadas a la
-          sensibilidad y etapas de maduración de los más pequeños.
-        </p>
-        <button className="btn btn-outline" style={{ marginTop: 16 }} onClick={() => navigate('/contacto')}>
-          Notificarme cuando esté listo
+
+      {groups.map((group) => (
+        <div className="xplev-catalog-group" key={group.corte}>
+          <div className="xplev-catalog-group__label">
+            {group.label} <span style={{ fontWeight: 400 }}>({group.rango})</span>
+          </div>
+          <div className="xplev-chip-list">
+            {group.items.map((item) => {
+              const isPending = item.estado === 'proximamente';
+              return (
+                <button
+                  key={item.id}
+                  className={`xplev-chip${isPending ? ' is-pending' : ''}`}
+                  onClick={() => navigate(`/proyectos/${item.id}`)}
+                >
+                  <SeasonDot season={item.season} />
+                  {item.title}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+
+      <div className="xplev-card__footer">
+        <span>Estaciones adaptadas a la etapa de maduración de cada corte</span>
+        <button className="xplev-card__route-link" style={{ color: 'var(--color-red)' }} onClick={() => navigate('/contacto')}>
+          Solicitar para tu parroquia →
         </button>
       </div>
     </section>
@@ -344,7 +409,7 @@ export default function XpLev() {
 
         <DerejOzCard items={derejOz} navigate={navigate} />
 
-        <DerejSimjaCard navigate={navigate} />
+        <DerejSimjaCard items={derejSimja} navigate={navigate} />
 
         <div className="xplev-grid-2">
           <DerejOpenCatalogCard

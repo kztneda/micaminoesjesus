@@ -132,12 +132,35 @@ Catálogo abierto, sin secuencia obligatoria. Agrupa talleres dirigidos a quiene
 
 ## 5. DÉREJ SIMJÁ — CAMINO DE LA ALEGRÍA (NIÑOS, HASTA 12 AÑOS)
 
-Catálogo abierto. **No usa el esquema rígido de Taller/Retiro** — usa el formato especial de **Estaciones** (ver sección 7). Aún no tiene contenido desarrollado.
+Catálogo abierto. **No usa el esquema rígido de Taller/Retiro** — usa el formato especial de **Estaciones** (ver sección 7).
+
+### 5.1 Corte oficial de edad
+
+| Corte | Rango de edad |
+|---|---|
+| **Kínder** | 4–6 años |
+| **Primaria** | 7–12 años |
+
+Toda actividad de Simjá debe indicar su corte (`Kínder`, `Primaria`, o `Ambos` si es adaptable a los dos). Este corte es ahora la subdivisión oficial de Simjá, no solo una sugerencia ad-hoc.
+
+### 5.2 Primer lote de actividades (2026-09-22)
+
+| Código | Nombre | Corte | Personaje-guía | Base bíblica | Mensaje kerygmático central | Estado |
+|---|---|---|---|---|---|---|
+| `SIMJA-BARCADEPEDRO` | La Barca de Pedro | Primaria *(primer módulo de este corte)* | Un pececito narrador | Lc 5:1-11 (pesca milagrosa) | Aunque no encuentres nada por tus propias fuerzas, si confías en Jesús la red se llena | ⏳ Pendiente de desarrollo |
+| `SIMJA-ARCADENOE` | El Arca de Noé: Refugio Seguro | Kínder *(primer módulo de este corte)* | Una paloma con la rama de olivo | Gn 6-9 (versión simplificada, promesa del arcoíris) | Dios cuida de mí y cumple sus promesas | ⏳ Pendiente de desarrollo |
+| `SIMJA-BUENPASTOR` | El Buen Pastor y la Ovejita Perdida | Ambos (adaptable) | La ovejita "Talia" | Lc 15:3-7 | La Iglesia nunca deja de buscar a nadie | ⏳ Pendiente de desarrollo |
+| `SIMJA-CINCOPANES` | Los Cinco Panes y Dos Peces | Primaria | El niño que compartió su almuerzo | Jn 6:1-13 | Lo poco que tengo, puesto en manos de Jesús, alcanza para todos | ⏳ Pendiente de desarrollo |
+| `SIMJA-ZAQUEO` | Zaqueo se Sube al Árbol | Primaria | Zaqueo (narrado en primera persona) | Lc 19:1-10 | Aunque seas pequeño y nadie te vea, Jesús te busca y te llama por tu nombre | ⏳ Pendiente de desarrollo |
+
+> **Coherencia vertical con Dérej Oz:** La Barca de Pedro (Simjá) y Zaqueo se Sube al Árbol (Simjá) comparten pasaje bíblico con `OZ-Pedro` y `OZ-Zaqueo`, ya existentes en Dérej Oz. Es intencional: el niño que vive la historia en Simjá puede reencontrarla, más profunda, en Oz al crecer — mismo patrón narrativo que ya conecta ambos Dérej.
+>
+> **Nota (2026-09-22):** Estas 5 entradas se registraron en el sitio (`retreats.js`) como stub `proximamente` (nombre, personaje-guía, base bíblica, mensaje kerygmático y bosquejo de estaciones posibles) — el documento formal completo con el esquema rígido de la sección 7 (Informativo/Generales/Contenido con Estaciones detalladas paso a paso/Anexos) todavía no está escrito, de ahí `⏳ Pendiente de desarrollo`. El nombre "Talia" para la ovejita de `SIMJA-BUENPASTOR` es una propuesta editorial, ajustable sin costo.
 
 | Aspecto | Estado |
 |---|---|
-| Subdivisión por edad (kínder / primaria, etc.) | ⏳ Por definir — se sugiere ad-hoc por evento (kínder y primaria como posible primer corte) |
-| Primer módulo/personaje bíblico | ⏳ Pendiente — sin definir aún |
+| Subdivisión por edad | ✅ Definida: Kínder (4-6) y Primaria (7-12), ver 5.1 |
+| Primer módulo por corte | ✅ Definido: La Barca de Pedro (Primaria) y El Arca de Noé (Kínder) |
 | Formato | ✅ Definido: Estaciones rotativas (ver sección 7) |
 
 ---
@@ -236,7 +259,7 @@ Cuando se solicite crear un taller, retiro o actividad nueva dentro de esta arqu
 - **Guibor:** desarrollar pasos 2–6 (Sansón, Tobías, Jonathan, José de Nazaret, Josué).
 - **Kavod:** desarrollar los 6 pasos completos (Fuiste Hecha Mujer, Eva, Ruth, Sicar, Betania, Judith); validar con equipo femenino el orden temático propuesto.
 - **Mesharét:** desarrollar Esclava del Señor, Sabios de Oriente, Shemá Bar. Catequistas, Hospitalidad, Intercesión/Oración, Predicadores y Monaguillos ya tienen nombre + bloques en `retreats.js`, falta imagen hero de cada uno. Betsalel (nueva, ver nota sección 4) queda pendiente de imagen también.
-- **Simjá:** definir subdivisión por edad (kínder/primaria u otra), y crear el primer módulo/personaje-guía.
+- **Simjá:** corte de edad definido (Kínder 4-6 / Primaria 7-12). 5 actividades registradas como stub en el sitio (La Barca de Pedro, El Arca de Noé, El Buen Pastor y la Ovejita Perdida, Los Cinco Panes y Dos Peces, Zaqueo se Sube al Árbol) — falta desarrollar el documento formal completo de cada una (esquema de Estaciones, sección 7) e imagen hero.
 - **Oz:** Pedro, Juan y Emaús ya están completos (contenido). Falta imagen hero de los 3 (prompts listos en `XP_LEV_PROMPTS_NANOBANANA.md`).
 - **Jaím:** desarrollar Samuel, Tengo Sed, El Último Rey, Emmanuel, Dos Hermanos, Barrabás, Gólgota, Cenáculo. Jesucristo Nuestra Esperanza ya está completa (contenido); falta su imagen hero (prompt listo). Belén ya está completo.
 
