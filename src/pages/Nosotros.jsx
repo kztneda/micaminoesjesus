@@ -1,6 +1,7 @@
 import nosotrosImage from '../assets/images/nosotros.webp';
 import jehosuaImage from '../assets/images/jehosua.jpg';
 import cristopherImage from '../assets/images/p-cristopher.jpeg';
+import maribelImage from '../assets/images/maribel.jpeg';
 
 const team = [
   {
@@ -10,12 +11,12 @@ const team = [
   },
   {
     name: 'Maribel Pinto Corona',
-    role: 'Directora y Evangelizadora',
-    image: null,
+    role: 'Evangelizadora',
+    image: maribelImage,
   },
   {
     name: 'Angélica M. Romero Hernández',
-    role: 'Directora',
+    role: 'Evangelizadora',
     image: null,
   },
   {
