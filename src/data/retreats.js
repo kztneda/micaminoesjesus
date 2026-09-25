@@ -39,6 +39,8 @@ import ozTomas from '../assets/images/OZ-TOMAS.jpg';
 import ozGetsemani from '../assets/images/OZ-GETSEMANI.jpg';
 import ozPentecostes from '../assets/images/OZ-PENTECOSTES.jpg';
 import jaimJesucristoNuestraEsperanza from '../assets/images/JAIM-JESUCRISTONUESTRAESPERANZA.jpg';
+import jaimBelenRetiro from '../assets/images/JAIM-BELENRETIRO.jpg';
+import jaimAlabastroRoto from '../assets/images/JAIM-ALABASTROROTO.jpg';
 import simjaBarcaDePedro from '../assets/images/SIMJA-BARCADEPEDRO.jpg';
 import simjaArcaDeNoe from '../assets/images/SIMJA-ARCADENOE.jpg';
 import simjaBuenPastor from '../assets/images/SIMJA-BUENPASTOR.jpg';
@@ -522,6 +524,53 @@ const rawRetreats = [
     chipsLabel: null, chips: null,
   },
   {
+    id: 'alabastro-roto', category: 'Retiro', sequence: null, sequenceStep: null, sequenceTheme: null,
+    derej: 'jaim', codigo: 'JAIM-ALABASTROROTO', estado: 'proximamente',
+    season: 'cuaresma', seasonSecondary: null,
+    title: 'Alabastro Roto', basadoEn: 'la mujer que unge a Jesús con perfume de nardo puro en Betania',
+    conceptoCentral: 'Quebrar lo más valioso que tienes, sin calcularlo, es la forma más alta de decirle a Cristo que lo vale todo.',
+    image: jaimAlabastroRoto,
+    bloques: [
+      { title: 'Romper el frasco, no solo abrirlo', text: 'A diferencia de perfumar poco a poco, la mujer de Betania rompe de un solo golpe el cuello del alabastro: no hay marcha atrás ni cálculo posible. Un retiro sobre la entrega total, no la entrega medida.' },
+      { title: 'Pieza intensa, con confesión disponible', text: 'Por la profundidad emocional y espiritual del contenido —quiebre, vergüenza, entrega radical—, este retiro contempla un sacerdote disponible para confesión durante todo el evento, no solo al cierre.' },
+    ],
+    temas: [
+      {
+        titulo: 'Preparar el Alabastro',
+        resumen: 'A partir del valor del perfume de nardo puro —cerca de un año de salario—, este tema invita a cada participante a nombrar su propio "alabastro": lo que más le cuesta soltar (tiempo, orgullo, control, una relación, una imagen).',
+        puntos: [
+          'La actividad introductoria busca que cada participante identifique con honestidad qué es lo más valioso —no necesariamente material— que aún no ha puesto en manos de Cristo.',
+          'El tema busca desmontar la idea de que entregarse a Dios empieza por dar lo que sobra: empieza por reconocer lo que de verdad cuesta.',
+        ],
+      },
+      {
+        titulo: 'El Quiebre',
+        resumen: 'Este tema contempla el gesto de romper el frasco frente a todos, sin pedir permiso ni justificarse, para mostrar que la entrega total no se negocia ni se explica ante la mirada ajena.',
+        puntos: [
+          'La dinámica busca que los participantes experimenten, de forma simbólica, lo incómodo de un gesto de amor que a otros les puede parecer excesivo o vergonzoso.',
+          'El tema busca liberar a cada uno del miedo al "qué dirán" cuando se trata de amar a Cristo sin medida.',
+        ],
+      },
+      {
+        titulo: 'El Reproche y el Silencio de Ella',
+        resumen: 'Frente a quienes la critican por "desperdiciar" el perfume, la mujer no se defiende ni se justifica — y es Jesús quien responde por ella: "Ella hizo lo que pudo."',
+        puntos: [
+          'La actividad busca que cada participante recuerde una vez en que su entrega a Dios fue cuestionada o minimizada por otros, y cómo respondió a esa crítica.',
+          'El tema busca enseñar que la aprobación ajena no es el termómetro de una entrega verdadera a Cristo.',
+        ],
+      },
+      {
+        titulo: 'Ungido para Siempre',
+        resumen: 'Cerrando con la promesa de Jesús de que la historia de esta mujer se contaría "dondequiera que se predique el Evangelio", este tema envía a los participantes con la certeza de que un acto de entrega total, aunque parezca pequeño o privado, tiene un peso eterno.',
+        puntos: [
+          'El rito final busca sellar simbólicamente el "alabastro" nombrado en el primer tema, entregándolo de forma concreta durante el retiro.',
+          'El cierre busca enviar a cada participante a vivir una entrega sin cálculo, confiando en que Dios, y no la aprobación humana, es quien da valor eterno a lo entregado.',
+        ],
+      },
+    ],
+    chipsLabel: null, chips: null,
+  },
+  {
     id: 'esclava-senor', category: 'Taller', sequence: null, sequenceStep: null, sequenceTheme: null,
     derej: 'mesharet', codigo: 'MESHARET-ESCLAVASENOR', estado: 'proximamente',
     season: 'adviento', seasonSecondary: null,
@@ -562,6 +611,61 @@ const rawRetreats = [
       { title: 'Llegar con las manos vacías', text: 'Ni los pastores ni los magos llegaron con méritos, llegaron con hambre de encontrarlo. Adorar sin necesitar tener algo que ofrecer primero.' },
     ],
     chipsLabel: null, chips: null,
+  },
+  {
+    id: 'belen-retiro', category: 'Retiro', sequence: null, sequenceStep: null, sequenceTheme: null,
+    derej: 'jaim', codigo: 'JAIM-BELENRETIRO', estado: 'proximamente',
+    season: 'adviento', seasonSecondary: null,
+    title: 'Belén', basadoEn: 'los llamados de María y José en el Evangelio de la Infancia',
+    conceptoCentral: 'Ser padre o madre es decir "sí" a un plan que casi nunca se entiende del todo, y sostenerlo de todas formas.',
+    image: jaimBelenRetiro,
+    bloques: [
+      { title: '"Sí", sin entender del todo', text: 'Un retiro que no se queda en el pesebre de Navidad: recorre las decisiones más difíciles de María y José —aceptar, proteger, dejar ir— como espejo de lo que significa hoy ser padre o madre.' },
+      { title: 'Para quien ya carga a un hijo', text: 'Pensado para padres, madres, padrinos o tutores que viven de cerca el peso de formar a otra persona, especialmente quienes sienten que no logran entender del todo a sus hijos o temen no estar a la altura de esa tarea.' },
+    ],
+    temas: [
+      {
+        titulo: 'El Sí que no Entiende del Todo',
+        resumen: 'A partir de la Anunciación a María, este tema muestra que la vocación de ser padre o madre casi nunca llega con el plan completo explicado: empieza con un "sí" dado en la oscuridad, antes de entender lo que costará.',
+        puntos: [
+          'La actividad introductoria busca que cada padre o madre recuerde el momento en que aceptó esa vocación —embarazo, adopción, tutela— sin saber realmente en qué se estaba metiendo.',
+          'El tema busca que reconozcan que la fe no elimina la incertidumbre de criar a un hijo: la sostiene en medio de ella.',
+        ],
+      },
+      {
+        titulo: 'El Padre que Actúa sin Palabras',
+        resumen: 'Basado en José, que no tiene una sola línea de diálogo registrada en el Evangelio pero cambia toda su vida al obedecer un sueño, este tema confronta a los padres con la tentación de medir su entrega en palabras y no en decisiones silenciosas y sostenidas.',
+        puntos: [
+          'La actividad busca que los participantes reconozcan los actos silenciosos y poco reconocidos que sostienen a una familia, y que suelen pasar desapercibidos frente a los que sí se dicen en voz alta.',
+          'El tema busca liberar a los padres —especialmente a los hombres— de la idea de que amar a un hijo se demuestra solo con discursos o grandes gestos visibles.',
+        ],
+      },
+      {
+        titulo: 'Proteger y Ser Atravesado',
+        resumen: 'Uniendo la huida a Egipto con la profecía de Simeón sobre la espada que atravesará el alma de María, este tema muestra que proteger de verdad a un hijo casi siempre exige riesgo, y que el amor a los hijos incluye, de antemano, la certeza de que va a doler.',
+        puntos: [
+          'La dinámica busca que cada padre o madre nombre en voz baja el miedo concreto que habita en su corazón: por la salud, el futuro, las decisiones o la fe de su hijo.',
+          'El tema busca sanar la idea de que un padre "fuerte" no debería sentir miedo o dolor por sus hijos: el miedo de José y el dolor profetizado a María no los hicieron peores padres.',
+        ],
+      },
+      {
+        titulo: 'Dejar Ir sin Dejar de Buscar',
+        resumen: 'A partir del Niño perdido y hallado en el templo, este tema confronta a los padres con la angustia de no entender del todo el llamado propio de sus hijos, y los invita a buscar sin ahogar, y a dejar crecer sin abandonar.',
+        puntos: [
+          'La actividad busca que los participantes distingan, en casos concretos de su propia familia, entre proteger por amor y controlar por miedo.',
+          'El tema busca que cada padre o madre haga las paces con la pregunta "¿no sabían que tenía que estar en la casa de mi Padre?": sus hijos, antes que nada, le pertenecen a Dios.',
+        ],
+      },
+      {
+        titulo: 'Hagan lo que Él les Diga',
+        resumen: 'Cerrando con las Bodas de Caná, este tema envía a los padres como intercesores confiados que, como María, no resuelven ellos mismos los problemas de sus hijos, sino que los dirigen siempre hacia Cristo.',
+        puntos: [
+          'El rito final busca que cada padre o madre entregue simbólicamente a su hijo o hija —presente en el corazón, aunque no esté físicamente ahí— en las manos de Cristo.',
+          'El cierre busca sellar el compromiso de ser, como María en Caná, quien intercede y confía, más que quien controla el resultado.',
+        ],
+      },
+    ],
+    chipsLabel: 'Para quién es este retiro', chips: ['Padres y madres', 'Padres adoptivos', 'Padrinos y tutores', 'Abuelos con crianza activa'],
   },
   {
     id: 'cenaculo', category: 'Adoración', sequence: null, sequenceStep: null, sequenceTheme: null,

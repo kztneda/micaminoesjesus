@@ -45,6 +45,8 @@ Cada retiro/taller se identifica con un código descriptivo:
 - **Sin pasos numerados (Mesharét, Simjá, Oz, Jaím):** `[DÉREJ]-[NombreCorto]`
   → Ejemplos: `MESHARET-EsclavaDelSeñor`, `JAIM-Belen`, `OZ-Emaus`
 
+> **Nota sobre nombres repetidos:** el código interno debe ser único aunque el título público de dos piezas comparta una misma palabra clave. Por ejemplo, `JAIM-Belen` (Hora Santa "El Camino a Belén") y `JAIM-BelenRetiro` (Retiro "Belén", ver sección 8) comparten la palabra "Belén" en su título público porque tratan el mismo episodio bíblico desde categorías distintas, pero tienen códigos internos distintos para no chocar en el sistema.
+
 ### 1.3 Categorías de formato (tipo de contenido)
 
 Todo el contenido de MCJ se clasifica en una de estas categorías fijas:
@@ -69,6 +71,16 @@ Todo contenido — sin importar a qué Dérej pertenezca — puede (opcionalment
 - Pentecostés
 
 Un contenido sin etiqueta se asume de uso libre en cualquier tiempo.
+
+### 1.5 Presencia sacerdotal obligatoria
+
+**Todo retiro, taller o Hora Santa/Vivencial de MCJ debe contemplar la participación de al menos un sacerdote**, en alguna (o varias) de estas funciones:
+
+- Confesiones durante el evento.
+- Una reflexión o tema específico a su cargo.
+- Presidir la Santa Misa de clausura.
+
+Esta participación **debe aparecer como bloque explícito en el cronograma de Anexos** (con su propia duración, como cualquier otro bloque), no basta con mencionarlo de forma general en la lista de Materiales. Al diseñar el cronograma de cualquier pieza nueva, ubicar el bloque de sacerdote en el punto donde tenga más sentido pastoral — por ejemplo, antes de un tema especialmente confrontativo o doloroso, para que quien lo necesite tenga a dónde ir sin esperar hasta el final del evento.
 
 ---
 
@@ -106,80 +118,66 @@ Progresión temática sugerida (propuesta a validar por el equipo femenino de fo
 
 > **Nota de validación pendiente:** el orden y la asignación temática de los pasos 2–6 de Kavod fue propuesta por analogía estructural con Guibor. Se recomienda validarla con mujeres del equipo de formación de MCJ antes de fijarla como definitiva.
 
-> **Nota (2026-09-22):** el sitio web tiene texto de landing/mercadeo para "Fuiste Hecha Mujer" (bloques introductorios, imagen), pero el documento formal completo con el esquema rígido de la constitución (Informativo/Generales/Contenido/Anexos) aún no está escrito — por eso queda `⏳ Pendiente de desarrollo` aquí aunque el sitio ya muestre una página de teaser.
+---
+
+## 4. DÉREJ MESHARÉT — CAMINO DEL QUE SIRVE (MINISTERIOS)
+
+Catálogo abierto de talleres/retiros para servidores de ministerios y funciones del templo.
+
+| Código | Nombre | Base teológica | Estado |
+|---|---|---|---|
+| `MESHARET-EsclavaDelSeñor` | Esclava del Señor | Fiat de María (Lc 1:38) como modelo de servicio | ⏳ Pendiente de desarrollo |
+| `MESHARET-SabiosDeOriente` | Sabios de Oriente | Los Magos, ofrenda y adoración como servicio | ⏳ Pendiente de desarrollo |
+| `MESHARET-ShemaBar` | Shemá Bar | Ministerios de música y adoración; dinámica del "Semáforo Litúrgico" | ⏳ Pendiente de desarrollo |
+| `MESHARET-Catequistas` | Catequistas | 2 Tim 2:1-2 — transmitir fielmente lo recibido | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| `MESHARET-Hospitalidad` | Hospitalidad | Gen 18:1-8 — Abraham y los tres visitantes | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| `MESHARET-Intercesion` | Intercesión y Oración | Ex 17:8-13 — los brazos que sostienen a Moisés | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| `MESHARET-Predicadores` | Formación de Predicadores | Is 6:1-8 — el carbón encendido que purifica los labios | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| `MESHARET-Monaguillos` | Monaguillos | Lc 2:41-49 — "en la casa de mi Padre" | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| `MESHARET-Betsalel` | Betsalel | Ex 31:1-11 — unción del Espíritu para el servicio técnico/artístico (sonido, decoración, diseño) | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
 
 ---
 
-## 4. DÉREJ MESHARÉT — CAMINO DEL QUE SIRVE (MINISTERIOS Y SERVIDORES)
+## 5. DÉREJ SIMJÁ — CAMINO DE LA ALEGRÍA (NIÑOS HASTA 12 AÑOS)
 
-Catálogo abierto, sin secuencia obligatoria. Agrupa talleres dirigidos a quienes ejercen un ministerio o cargo de servicio dentro del templo/comunidad.
-
-| Código | Nombre | Ministerio destinatario | Base teológica | Estado |
-|---|---|---|---|---|
-| `MESHARET-EsclavaDelSeñor` | Esclava del Señor | Servidores/ministerios en general | María, Madre de Jesús | ⏳ Pendiente de desarrollo |
-| `MESHARET-SabiosDeOriente` | Sabios de Oriente | Comunidad general | Los Reyes Magos — dones puestos al servicio del prójimo | ⏳ Pendiente de desarrollo |
-| `MESHARET-ShemaBar` | Shemá Bar: Adoración en Movimiento | Ministerios de música/adoración | Documentos y concilios vaticanos sobre música litúrgica | ⏳ Pendiente de desarrollo |
-| `MESHARET-Catequistas` | Lo que Oíste de Mí, Encomiéndalo | Catequistas | Pablo y Timoteo (2 Tim 2:1-2) | ⏳ Pendiente de desarrollo |
-| `MESHARET-Hospitalidad` | El Altar de la Puerta Abierta | Ujieres / ministerio de hospitalidad | Abraham y los tres visitantes (Gn 18:1-8) | ⏳ Pendiente de desarrollo |
-| `MESHARET-Intercesion` | Los Brazos que no se Cansan | Ministerio de intercesión y oración | Moisés, Aarón y Hur (Éx 17:8-13) | ⏳ Pendiente de desarrollo |
-| `MESHARET-Predicadores` | El Carbón Encendido | Formación de predicadores | El profeta Isaías (Is 6:1-8) | ⏳ Pendiente de desarrollo |
-| `MESHARET-Monaguillos` | En la Casa de mi Padre | Monaguillos/acólitos | El Niño Jesús en el Templo (Lc 2:41-49) | ⏳ Pendiente de desarrollo |
-| `MESHARET-Betsalel` | Manos Llenas del Espíritu | Servidores técnicos (sonido, decoración, logística, diseño) | Betsalel (Éx 31:1-11) | ⏳ Pendiente de desarrollo |
-
-> **Nota (2026-09-22):** Esclava del Señor y Sabios de Oriente tienen texto de landing/mercadeo en el sitio (venían clasificados ahí como Jaím por error de mapeo previo; se corrigió a Mesharét según este documento). Catequistas, Hospitalidad, Intercesión, Predicadores, Monaguillos y Betsalel ya tienen nombre, base bíblica y bloques redactados en `retreats.js` (estado `proximamente`); el documento formal completo (esquema rígido de constitución) aún no está escrito, de ahí `⏳ Pendiente de desarrollo`. `MESHARET-Betsalel` es una figura nueva, sugerida para llenar el vacío teológico de los servidores "no visibles" (técnicos/logística), que antes no tenían ninguna figura bíblica asignada — no forma parte del backlog original de este documento.
-
----
-
-## 5. DÉREJ SIMJÁ — CAMINO DE LA ALEGRÍA (NIÑOS, HASTA 12 AÑOS)
-
-Catálogo abierto. **No usa el esquema rígido de Taller/Retiro** — usa el formato especial de **Estaciones** (ver sección 7).
-
-### 5.1 Corte oficial de edad
-
-| Corte | Rango de edad |
+| Definición | Estado |
 |---|---|
-| **Kínder** | 4–6 años |
-| **Primaria** | 7–12 años |
-
-Toda actividad de Simjá debe indicar su corte (`Kínder`, `Primaria`, o `Ambos` si es adaptable a los dos). Este corte es ahora la subdivisión oficial de Simjá, no solo una sugerencia ad-hoc.
-
-### 5.2 Primer lote de actividades (2026-09-22)
-
-| Código | Nombre | Corte | Personaje-guía | Base bíblica | Mensaje kerygmático central | Estado |
-|---|---|---|---|---|---|---|
-| `SIMJA-BARCADEPEDRO` | La Barca de Pedro | Primaria *(primer módulo de este corte)* | Un pececito narrador | Lc 5:1-11 (pesca milagrosa) | Aunque no encuentres nada por tus propias fuerzas, si confías en Jesús la red se llena | ⏳ Pendiente de desarrollo |
-| `SIMJA-ARCADENOE` | El Arca de Noé: Refugio Seguro | Kínder *(primer módulo de este corte)* | Una paloma con la rama de olivo | Gn 6-9 (versión simplificada, promesa del arcoíris) | Dios cuida de mí y cumple sus promesas | ⏳ Pendiente de desarrollo |
-| `SIMJA-BUENPASTOR` | El Buen Pastor y la Ovejita Perdida | Ambos (adaptable) | La ovejita "Talia" | Lc 15:3-7 | La Iglesia nunca deja de buscar a nadie | ⏳ Pendiente de desarrollo |
-| `SIMJA-CINCOPANES` | Los Cinco Panes y Dos Peces | Primaria | El niño que compartió su almuerzo | Jn 6:1-13 | Lo poco que tengo, puesto en manos de Jesús, alcanza para todos | ⏳ Pendiente de desarrollo |
-| `SIMJA-ZAQUEO` | Zaqueo se Sube al Árbol | Primaria | Zaqueo (narrado en primera persona) | Lc 19:1-10 | Aunque seas pequeño y nadie te vea, Jesús te busca y te llama por tu nombre | ⏳ Pendiente de desarrollo |
-
-> **Coherencia vertical con Dérej Oz:** La Barca de Pedro (Simjá) y Zaqueo se Sube al Árbol (Simjá) comparten pasaje bíblico con `OZ-Pedro` y `OZ-Zaqueo`, ya existentes en Dérej Oz. Es intencional: el niño que vive la historia en Simjá puede reencontrarla, más profunda, en Oz al crecer — mismo patrón narrativo que ya conecta ambos Dérej.
->
-> **Nota (2026-09-22):** Estas 5 entradas se registraron en el sitio (`retreats.js`) como stub `proximamente` (nombre, personaje-guía, base bíblica, mensaje kerygmático y bosquejo de estaciones posibles) — el documento formal completo con el esquema rígido de la sección 7 (Informativo/Generales/Contenido con Estaciones detalladas paso a paso/Anexos) todavía no está escrito, de ahí `⏳ Pendiente de desarrollo`. El nombre "Talia" para la ovejita de `SIMJA-BUENPASTOR` es una propuesta editorial, ajustable sin costo.
-
-| Aspecto | Estado |
-|---|---|
-| Subdivisión por edad | ✅ Definida: Kínder (4-6) y Primaria (7-12), ver 5.1 |
+| Subdivisión por edad | ✅ Definida: Kínder (4-6) y Primaria (7-12) |
 | Primer módulo por corte | ✅ Definido: La Barca de Pedro (Primaria) y El Arca de Noé (Kínder) |
 | Formato | ✅ Definido: Estaciones rotativas (ver sección 7) |
+
+Actividades registradas como stub en el sitio, con imagen hero ya generada (falta desarrollar el documento formal completo de cada una según el esquema de Estaciones, sección 7):
+
+- La Barca de Pedro
+- El Arca de Noé
+- El Buen Pastor y la Ovejita Perdida
+- Los Cinco Panes y Dos Peces
+- Zaqueo se Sube al Árbol
 
 ---
 
 ## 6. DÉREJ OZ — CAMINO DE FUERZA (JÓVENES, 13–30 AÑOS APROX.)
 
-Catálogo abierto, **sin pasos numerados obligatorios**, pero con una **progresión sugerida** para ubicar dónde encaja cada taller nuevo dentro del recorrido del discípulo joven:
+Catálogo abierto, **sin pasos numerados obligatorios** para su consumo (se pueden tomar sueltos), pero ya **formalizado en el sitio** (`retreats.js`) como una progresión de **10 pasos agrupados en 5 bloques** que ubica dónde encaja cada pieza dentro del recorrido del discípulo joven:
 
-**Progresión sugerida:** Encuentro con Cristo → Discipulado/Amistad con Él → Oración personal y comunitaria → Pasión/Cruz → Misión/Envío
+**Progresión en 5 bloques:** 1. Encuentro con Cristo → 2. Discipulado/Amistad con Él → 3. Oración personal y comunitaria → 4. Pasión/Cruz → 5. Misión/Envío
 
-| Código | Nombre | Encaje en la progresión | Estado |
-|---|---|---|---|
-| `OZ-Pedro` | Pedro, el discípulo firme | Recorre las 5 etapas completas (Encuentro→Llamado→Pasión→Resurrección→Envío) | ✅ Existe |
-| `OZ-Juan` | Juan, el discípulo amado | Recorre las 5 etapas completas (mismo esquema) | ✅ Existe |
-| `OZ-Emaus` | Emaús | Oración personal y comunitaria | ✅ Existe |
+| Bloque | Paso | Código | Nombre | Categoría | Estado |
+|---|---|---|---|---|---|
+| 1. Encuentro con Cristo | 1 | `OZ-Zaqueo` | Zaqueo | Taller | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| 1. Encuentro con Cristo | 2 | `OZ-Bartimeo` | Bartimeo | Taller | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| 1. Encuentro con Cristo | 3 | `OZ-CaminoDamasco` | Camino a Damasco | Retiro | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| 2. Discipulado/Amistad con Él | 4 | `OZ-Pedro` | Pedro, el discípulo firme | Taller | ✅ Existe |
+| 2. Discipulado/Amistad con Él | 5 | `OZ-Juan` | Juan, el discípulo amado | Taller | ✅ Existe |
+| 2. Discipulado/Amistad con Él | 6 | `OZ-JovenRico` | El Joven Rico | Taller | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| 2. Discipulado/Amistad con Él | 7 | `OZ-Tomas` | Tomás | Taller | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| 3. Oración personal y comunitaria | 8 | `OZ-Emaus` | Emaús | Taller | ✅ Existe |
+| 4. Pasión/Cruz | 9 | `OZ-Getsemani` | Getsemaní | Hora Santa / Vivencial | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
+| 5. Misión/Envío | 10 | `OZ-Pentecostes` | Pentecostés | Hora Santa / Vivencial | ⏳ Pendiente de desarrollo (nombre, bloques e imagen hero ya en `retreats.js`) |
 
-Todo taller nuevo de Dérej Oz debe indicar en qué punto de esta progresión se ubica principalmente, aunque no exista obligación de tomarlos en orden.
+Todo taller nuevo de Dérej Oz debe indicar en qué bloque de esta progresión se ubica principalmente; el paso numérico dentro del bloque solo importa para el orden de exhibición en el sitio, no obliga a tomarlos en secuencia.
 
-> **Nota (2026-09-22):** Pedro, Juan y Emaús ya tienen su página completa construida en el sitio a partir de los documentos fuente (`T - Pedro.docx`, `T - Juan.docx`, `T - Emaús.docx`). Solo falta la imagen hero de cada una — prompts generados en `XP_LEV_PROMPTS_NANOBANANA.md`.
+> **Nota (2026-09-25):** El catálogo de Oz se amplió de 3 a 10 piezas (antes solo Pedro, Juan y Emaús). Las 7 piezas nuevas — Zaqueo, Bartimeo, Camino a Damasco, Joven Rico, Tomás, Getsemaní y Pentecostés — ya tienen código, nombre, concepto central, bloques descriptivos e imagen hero cargados en `retreats.js` (estado `proximamente` en el sitio), pero aún no tienen el documento formal completo con el esquema rígido de Taller/Retiro (Informativo/Generales/Contenido con Temas/Anexos), de ahí `⏳ Pendiente de desarrollo` aquí. Pedro, Juan y Emaús siguen siendo las únicas 3 con su página completa construida a partir de documento fuente (`T - Pedro.docx`, `T - Juan.docx`, `T - Emaús.docx`) y ya tienen también su imagen hero — la nota previa sobre "falta imagen hero" quedó obsoleta, las 10 piezas de Oz ya tienen imagen en el sitio.
 
 ---
 
@@ -233,8 +231,14 @@ Catálogo abierto de retiros y Horas Santas sin restricción de edad, género o 
 | `JAIM-JesucristoNuestraEsperanza` | Jesucristo Nuestra Esperanza | Hora Santa / Vivencial | Jesús como esperanza, Puerta y Camino | Fin/Inicio de año (Tiempo Ordinario) | ✅ Existe |
 | `JAIM-Golgota` | Gólgota | Retiro | La Pasión, Muerte y Resurrección — la redención del fracaso humano | Cuaresma / Pascua | ⏳ Pendiente de desarrollo |
 | `JAIM-Cenaculo` | Cenáculo | Hora Santa / Vivencial | Institución de la Eucaristía en la Última Cena | Pascua / Cuaresma | ⏳ Pendiente de desarrollo |
+| `JAIM-BelenRetiro` | Belén | Retiro | Vocación de la paternidad/maternidad a partir de los llamados de María y José (Lc 1:26-38, Mt 1:18-25, Mt 2:13-15, Lc 2:34-35, Lc 2:39-52, Jn 2:1-11); dirigido a padres y madres | Adviento | ⏳ Pendiente de desarrollo (5 temas + bloques + imagen hero ya en `retreats.js`, `estado: 'proximamente'`) |
+| `JAIM-AlabastroRoto` | Alabastro Roto | Retiro | La unción de Betania (Jn 12:1-8, Mc 14:3-9) — adoración, reconocimiento y entrega total a Cristo; pieza espiritual y psicológicamente intensa, requiere sacerdote disponible para confesión durante el evento | Cuaresma / Semana Santa | ⏳ Pendiente de desarrollo (4 temas + bloques + imagen hero ya en `retreats.js`, `estado: 'proximamente'`) |
 
-> **Nota (2026-09-22, actualizada):** El estado `✅ Existe` / `⏳ Pendiente de desarrollo` de este documento se define por si hay un documento fuente en `Manuales/Listos/` — no por si el sitio web tiene texto de landing/mercadeo. Samuel, Tengo Sed, El Último Rey, Emmanuel, Dos Hermanos, Barrabás, Gólgota y Cenáculo tienen texto en el sitio pero no tienen documento fuente en esa carpeta, de ahí `⏳ Pendiente de desarrollo`. Belén, Jesucristo Nuestra Esperanza, y (en la sección 6) Pedro, Juan y Emaús sí tienen documento fuente confirmado ahí y ya tienen su página completa construida en el sitio — a Jesucristo Nuestra Esperanza, Pedro, Juan y Emaús solo les falta la imagen hero (prompts en `XP_LEV_PROMPTS_NANOBANANA.md`). Gólgota y Cenáculo no estaban registrados en este documento — se agregan aquí en la tabla de Jaím.
+> **Nota (2026-09-25):** `JAIM-BelenRetiro` usa el título público "Belén" — distinto de código a `JAIM-Belen` (la Hora Santa "El Camino a Belén") aunque comparten palabra clave en el título, ver sección 1.2. `JAIM-AlabastroRoto` fue aprobado como Retiro para Cuaresma/Semana Santa; considerar programarlo junto con `JAIM-Golgota` en un mismo fin de semana intensivo (Alabastro Roto como antesala de adoración/entrega antes de la Pasión).
+>
+> **Nota (2026-09-25, contenido generado):** Se verificó que no existe documento fuente para ninguno de los dos en `Manuales/Listos/`, así que el contenido de ambos se generó desde cero siguiendo la línea teológica de este documento (formato compacto título+resumen+puntos, igual que `GIBOR-01-LEVANTATE`). `JAIM-BelenRetiro` tiene 5 temas (uno por pasaje, agrupando la huida a Egipto con la profecía de Simeón); `JAIM-AlabastroRoto` tiene 4 temas/movimientos propios (Preparar el Alabastro → El Quiebre → El Reproche y el Silencio de Ella → Ungido para Siempre), ya que solo dispone de 2 pasajes narrando el mismo episodio. Ambos quedaron con `estado: 'proximamente'` en `retreats.js` (no `'publicado'`) a la espera de revisión humana del contenido doctrinal antes de mostrarse como pieza terminada. Las imágenes hero (`JAIM-BELENRETIRO.jpg`, `JAIM-ALABASTROROTO.jpg`) ya se generaron y están importadas en `retreats.js`.
+
+> **Nota (2026-09-22, actualizada):** El estado `✅ Existe` / `⏳ Pendiente de desarrollo` de este documento se define por si hay un documento fuente en `Manuales/Listos/` — no por si el sitio web tiene texto de landing/mercadeo. Samuel, Tengo Sed, El Último Rey, Emmanuel, Dos Hermanos, Barrabás, Gólgota y Cenáculo tienen texto en el sitio pero no tienen documento fuente en esa carpeta, de ahí `⏳ Pendiente de desarrollo`. Belén, Jesucristo Nuestra Esperanza, y (en la sección 6) Pedro, Juan y Emaús sí tienen documento fuente confirmado ahí y ya tienen su página completa construida en el sitio, con imagen hero incluida. Gólgota y Cenáculo no estaban registrados en este documento — se agregan aquí en la tabla de Jaím.
 
 ---
 
@@ -243,7 +247,7 @@ Catálogo abierto de retiros y Horas Santas sin restricción de edad, género o 
 Cuando se solicite crear un taller, retiro o actividad nueva dentro de esta arquitectura:
 
 1. **Ubicar primero el Dérej y, si aplica, el número de paso o el punto de la progresión sugerida** antes de desarrollar contenido.
-2. **Asignar código** siguiendo el sistema de la sección 1.2.
+2. **Asignar código** siguiendo el sistema de la sección 1.2, verificando que no choque con un código ya existente aunque el título público comparta palabra clave con otra pieza.
 3. **Revisar el eje temático central** del paso/dimensión (secciones 2–8) y no desviarse de él, aunque se toquen otros temas tangencialmente.
 4. **Usar siempre LBLA** para las citas bíblicas.
 5. **Fidelidad absoluta al Magisterio católico** — nunca contradice doctrina, aunque el estilo sea cercano, directo y use humor inteligente y analogías cotidianas.
@@ -251,6 +255,7 @@ Cuando se solicite crear un taller, retiro o actividad nueva dentro de esta arqu
 7. **Etiquetar tiempo litúrgico** si aplica (Tiempo Ordinario, Adviento, Cuaresma, Pascua, Pentecostés) — opcional pero recomendado para facilitar programación pastoral.
 8. **Nunca inventar contenido para llenar un hueco marcado como "⏳ Pendiente de desarrollo"** sin que el usuario lo solicite explícitamente — estos huecos son un registro de lo que falta, no una autorización de generación automática.
 9. **Todo debe ser vivencial y activo**: el facilitador guía, el participante vive el proceso — nunca una charla puramente expositiva.
+10. **Contemplar siempre la participación de al menos un sacerdote** (sección 1.5), con su bloque explícito en el cronograma de Anexos — nunca solo mencionado en Materiales.
 
 ---
 
@@ -258,10 +263,10 @@ Cuando se solicite crear un taller, retiro o actividad nueva dentro de esta arqu
 
 - **Guibor:** desarrollar pasos 2–6 (Sansón, Tobías, Jonathan, José de Nazaret, Josué).
 - **Kavod:** desarrollar los 6 pasos completos (Fuiste Hecha Mujer, Eva, Ruth, Sicar, Betania, Judith); validar con equipo femenino el orden temático propuesto.
-- **Mesharét:** desarrollar Esclava del Señor, Sabios de Oriente, Shemá Bar. Catequistas, Hospitalidad, Intercesión/Oración, Predicadores y Monaguillos ya tienen nombre + bloques en `retreats.js`, falta imagen hero de cada uno. Betsalel (nueva, ver nota sección 4) queda pendiente de imagen también.
-- **Simjá:** corte de edad definido (Kínder 4-6 / Primaria 7-12). 5 actividades registradas como stub en el sitio (La Barca de Pedro, El Arca de Noé, El Buen Pastor y la Ovejita Perdida, Los Cinco Panes y Dos Peces, Zaqueo se Sube al Árbol) — falta desarrollar el documento formal completo de cada una (esquema de Estaciones, sección 7) e imagen hero.
-- **Oz:** Pedro, Juan y Emaús ya están completos (contenido). Falta imagen hero de los 3 (prompts listos en `XP_LEV_PROMPTS_NANOBANANA.md`).
-- **Jaím:** desarrollar Samuel, Tengo Sed, El Último Rey, Emmanuel, Dos Hermanos, Barrabás, Gólgota, Cenáculo. Jesucristo Nuestra Esperanza ya está completa (contenido); falta su imagen hero (prompt listo). Belén ya está completo.
+- **Mesharét:** desarrollar Esclava del Señor, Sabios de Oriente, Shemá Bar, Catequistas, Hospitalidad, Intercesión/Oración, Predicadores, Monaguillos y Betsalel — las 6 últimas ya tienen nombre, bloques e imagen hero en `retreats.js`.
+- **Simjá:** corte de edad definido (Kínder 4-6 / Primaria 7-12). 5 actividades registradas como stub en el sitio, ya con imagen hero (La Barca de Pedro, El Arca de Noé, El Buen Pastor y la Ovejita Perdida, Los Cinco Panes y Dos Peces, Zaqueo se Sube al Árbol) — falta desarrollar el documento formal completo de cada una (esquema de Estaciones, sección 7).
+- **Oz:** catálogo ampliado de 3 a 10 piezas en 5 bloques (paso 1-10, ver sección 6). Pedro, Juan y Emaús ya están completos (contenido + imagen hero). Faltan los documentos formales completos de Zaqueo, Bartimeo, Camino a Damasco, Joven Rico, Tomás, Getsemaní y Pentecostés — ya tienen nombre, bloques e imagen hero en `retreats.js`.
+- **Jaím:** desarrollar Samuel, Tengo Sed, El Último Rey, Emmanuel, Dos Hermanos, Barrabás, Gólgota, Cenáculo, `JAIM-BelenRetiro` (Belén — padres/madres) y `JAIM-AlabastroRoto`. Jesucristo Nuestra Esperanza ya está completa (contenido + imagen hero). Belén (`JAIM-Belen`, la Hora Santa) ya está completo.
 
 ---
 

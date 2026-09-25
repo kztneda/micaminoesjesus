@@ -2,28 +2,29 @@ import nosotrosImage from '../assets/images/nosotros.webp';
 import jehosuaImage from '../assets/images/jehosua.jpg';
 import cristopherImage from '../assets/images/p-cristopher.jpeg';
 import maribelImage from '../assets/images/maribel.jpeg';
+import angyImage from '../assets/images/angy.jpeg';
 
 const team = [
   {
+    name: 'Pbro. Lic. Theol. Cristopher Cortés Pliego',
+    role: 'Fundador y Asr. Espiritual',
+    image: cristopherImage,
+  },
+  {
     name: 'Jehosua A. Castañeda Ortiz',
-    role: 'Fundador y Director',
+    role: 'Fundador y Eq. Pastoral',
     image: jehosuaImage,
   },
   {
     name: 'Maribel Pinto Corona',
-    role: 'Evangelizadora',
+    role: 'Eq. Pastoral',
     image: maribelImage,
   },
   {
     name: 'Angélica M. Romero Hernández',
-    role: 'Evangelizadora',
-    image: null,
-  },
-  {
-    name: 'Pbro. Lic. Theol. Cristopher Cortés Pliego',
-    role: 'Fundador y Asesor Espiritual',
-    image: cristopherImage,
-  },
+    role: 'Eq. Pastoral',
+    image: angyImage,
+  }
 ];
 
 function initialsOf(name) {
